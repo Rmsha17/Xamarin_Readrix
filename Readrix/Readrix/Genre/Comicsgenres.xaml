@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Readrix.Views.Comicsgenres" >
+    
+    <ContentView.Content>
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+            <Image Source="bb2.jpeg" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Aspect="AspectFill"/>
+
+            <ScrollView  VerticalScrollBarVisibility="Never">
+
+            
+                <CollectionView x:Name="ListData" SelectionMode="Single"  SelectionChanged="ListData_SelectionChanged" ItemsLayout="VerticalGrid, 2">
+                    <CollectionView.ItemTemplate >
+
+                        <DataTemplate>
+                            <Grid Padding="10">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup Name="CommonStates">
+                                        <VisualState Name="Normal" />
+                                        <VisualState Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="Transparent" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="0" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10"/>
+                                    <ColumnDefinition Width="80"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <Label Grid.Row="0"
+                           Grid.ColumnSpan="2" 
+                       Text="{Binding SUB_CATEGORY_NAME}"
+                       FontAttributes="Bold"
+                        TextColor="Black"
+                        HorizontalOptions="CenterAndExpand" 
+                       FontSize="14"/>
+
+                            </Grid>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ScrollView>
+        </AbsoluteLayout>
+
+    </ContentView.Content>
+</ContentView>

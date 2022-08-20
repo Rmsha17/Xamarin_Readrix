@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Readrix.Shop.Shopartifactindex" BackgroundImageSource="bb2" Title="Artifact Details">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem  Text="Cart" Clicked="ToolbarItem_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView Orientation="Vertical">
+        <StackLayout Margin="10,15,10,30">
+                <Label x:Name="lblname" TextColor="Black" FontSize="Medium" HorizontalOptions="StartAndExpand" FontAttributes="Bold"/> 
+                <StackLayout Padding="0" Margin="0" HorizontalOptions="FillAndExpand">
+                    <Frame HeightRequest="280" BackgroundColor="DarkCyan" CornerRadius="10" Padding="5" Margin="0">
+                        <Image Source="S1.jpg" x:Name="imageartifact" Aspect="Fill" Margin="0"/>
+                    </Frame>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Price |" FontSize="Medium" TextColor="Black" ></Label>
+                    <Label x:Name="lblprice" FontSize="Medium" TextColor="Black"></Label>
+                    <Label  FontSize="Medium" Text="Rs." TextColor="Black"></Label>
+                </StackLayout>
+
+                <Label Text="Description" FontSize="Medium" TextColor="Black"></Label>
+                <Label x:Name="lbldescription" HorizontalOptions="StartAndExpand" ></Label>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
+                    <Button Margin="2,0,2,0"  WidthRequest="200" FontAttributes="Bold" BorderWidth="3" BorderColor="White" Text="Add to Cart" Clicked="Button_Clicked" CornerRadius="15" />
+                    </StackLayout>
+                <Label/>
+               
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

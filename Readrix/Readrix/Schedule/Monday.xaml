@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Readrix.Schedule.Monday" BackgroundColor="White" >
+    <CollectionView  x:Name="ListData" SelectionMode="Single" SelectionChanged="ListData_SelectionChanged"
+              ItemsLayout="VerticalGrid, 2" >
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <SwipeView >
+                    <SwipeView.LeftItems >
+                        <SwipeItems >
+                            <SwipeItem  Text="ONGOING : MONDAY"
+                       IconImageSource="delete.png" 
+                       BackgroundColor="#CCCCFF"
+                        />
+                        </SwipeItems>
+                    </SwipeView.LeftItems>
+                    <Grid Padding="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="80"/>
+                        </Grid.ColumnDefinitions>
+                        <Image 
+                       Grid.RowSpan="4" 
+                       Grid.ColumnSpan="2"
+                       Source="{Binding ARTIFACT_PICTURE}"
+                       x:Name="artimage"
+                       Aspect="Fill"
+                       HeightRequest="180"
+                       WidthRequest="150" Margin="0,0,0,-22" />
+
+                        <Label Grid.Row="5"
+                           Grid.ColumnSpan="2" 
+                       Text="{Binding ARTIFACT_NAME}" TextColor="Black"
+                       FontAttributes="Bold" HeightRequest="40"
+                       FontSize="14" Padding="0,-5,0,0" MaxLines="2"
+                        />
+                        <Label Grid.Row="4"
+                        Grid.ColumnSpan="2"
+                              Grid.Column="0" Padding="0,20,0,0"
+                        Text="{Binding SubCategory_Name}"
+                       FontAttributes="Bold"
+                       FontSize="Micro"/>
+                          </Grid>
+                </SwipeView>
+
+            </DataTemplate>
+
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentView>

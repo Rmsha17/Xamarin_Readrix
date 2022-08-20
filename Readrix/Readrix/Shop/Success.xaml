@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Readrix.Shop.Success" Title="Order Confirmed" BackgroundImageSource="bb1">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Padding="14">
+            <Image Source="confirm.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="100" />
+            <Label/>
+            <Label HorizontalOptions="CenterAndExpand" TextColor="Black" Text="Congratulation! Your Order has been Confirmed.And Your order will be delivered as per Conditions .Thank you" />
+            <Label />
+            <Button x:Name="btnCurrentLocation" Clicked="btnCurrentLocation_Clicked" Text="Close order" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

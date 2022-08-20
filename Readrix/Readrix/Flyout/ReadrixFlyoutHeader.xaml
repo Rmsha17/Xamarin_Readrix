@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Readrix.ReaderLoginSystem.ReadrixFlyoutHeader"
+              HeightRequest="190" NavigationPage.IconColor="HotPink" >
+    <ContentView.Content>
+        
+            <Grid HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand" >
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="30"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="110"/>
+                    <RowDefinition Height="Auto"/>
+
+                </Grid.RowDefinitions>
+
+
+                <Image Aspect="AspectFill"
+            Source="Gradient.jpg"
+              Grid.ColumnSpan="5"
+               Grid.RowSpan="4"
+                   Opacity="0.7" />
+
+                <Frame BackgroundColor="SkyBlue" HeightRequest="100" WidthRequest="100" CornerRadius="50" Padding="0" BorderColor="white"   Margin="2" Grid.Column="1" Grid.Row="1">
+                    <Image  Margin="0" Source="userguests.png" Aspect="AspectFill" 
+                 x:Name="readerimage" 
+                   />
+                </Frame>
+
+                <StackLayout VerticalOptions="CenterAndExpand" Grid.Row="1" Margin="0" Padding="0"
+            Grid.Column="2" Grid.ColumnSpan="3" Grid.RowSpan="2" Orientation="Vertical">
+                    <Label
+            HorizontalTextAlignment="Start"
+            VerticalTextAlignment="Center"
+            TextColor="Black"
+            Text="GuestUser"  x:Name="readername" FontAttributes="Bold" Padding="0,20,0,0" />
+
+                    <Label 
+             HorizontalTextAlignment="Start"
+             VerticalTextAlignment="Start"
+             TextColor="Black" FontSize="Micro" x:Name="readeremail" Text="guestuser@gmail.com"/>
+                </StackLayout>
+
+            </Grid>
+       
+    </ContentView.Content>
+</ContentView>

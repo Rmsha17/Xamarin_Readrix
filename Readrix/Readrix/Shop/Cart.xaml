@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Readrix.Shop.Cart" BackgroundImageSource="bb1">
+    <ContentPage.Content>
+        <ListView x:Name="CartList" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="24">
+                            <Grid Padding="2" BackgroundColor="White">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30*" />
+                                    <ColumnDefinition Width="130*" />
+                                    <ColumnDefinition Width="10*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Image Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Source="{Binding ARTIFACT_IMAGE}" />
+
+                                <StackLayout VerticalOptions="StartAndExpand" Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+                                    <Label FontSize="16"  Text="{Binding ARTIFACT_NAME}" />
+                                    <Label FontSize="16" Text="Category : " />
+                                    <Label FontSize="16" Text="Category"/>
+                                </StackLayout>
+
+                                <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                                    <Label  Text="Price :"  />
+                                    <Label  Text="{Binding ARTIFACT_SALEPRICE}"  />
+                                    <Label  Text="X  Qty :"/>
+                                    <Label  Text="{Binding QUANTITY}"  />
+                                    <Label  Text="=  Total :"  />
+                                    <Label  Text="{Binding Total}" />
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="Red" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2">
+                                    <Label  Text="  X  "  TextColor="White" />
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>

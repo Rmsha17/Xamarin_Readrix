@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Readrix.Settingreader.Invoice" Title="Invoice">
+    <ContentPage.Content>
+        <ScrollView Orientation="Vertical">
+            <StackLayout Spacing="10" Padding="10">
+                <StackLayout Padding="0" Margin="0" HorizontalOptions="FillAndExpand" >
+                    <Frame HeightRequest="90" BackgroundColor="DarkCyan" Padding="0" Margin="0" CornerRadius="10">
+                        <Image Source="Invoice.png" Aspect="AspectFill" Margin="0"/>
+                    </Frame>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Margin="10,0,0,0">
+                    <Label Text="Grand Total:" TextColor="Black" FontSize="Medium"   FontAttributes="Bold"/>
+                    <Label TextColor="Black" FontSize="Medium"  x:Name="lbltotal" FontAttributes="Bold"/>
+                    <Label  FontSize="Medium"  Text="Rs" FontAttributes="Bold"/>
+
+                </StackLayout> 
+                <StackLayout Orientation="Vertical" Margin="10,0,0,0">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Order ID:" TextColor="Black" FontSize="16"  FontAttributes="Bold"/>
+                        <Label  TextColor="Black" FontSize="16"   x:Name="lblid" FontAttributes="Bold"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Order Date:" TextColor="Black" FontSize="16"   FontAttributes="Bold"/>
+                        <Label  TextColor="Black" FontSize="16"   x:Name="lbldate" FontAttributes="Bold"/>
+                    </StackLayout>
+                </StackLayout>
+              <Label x:Name="lblname" Margin="10,20,10,20" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" FontSize="Medium" IsVisible="false" TextColor="Black"/>
+                <ListView x:Name="ListData" HeightRequest="220"
+              HasUnevenRows="True" 
+              SeparatorVisibility="None">
+
+                   
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Margin="20,0,0,20">
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="100"/>
+
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="6*" />
+                                        <ColumnDefinition Width="5*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="Artifact Image:" Grid.Row="0" TextColor="Black" Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="0"/>
+                                    <Frame Grid.ColumnSpan="2"  Grid.RowSpan="7" CornerRadius="20" HeightRequest="70" WidthRequest="20" Margin="0,-40,100,0" Padding="0"
+                                       Grid.Row="1"  Grid.Column="0" 
+                                      >
+                                        <Image 
+                                Source="{Binding ARTIFACT_IMAGE}"
+                                x:Name="artimage"
+                                Aspect="Fill"
+                                />
+                                    </Frame>
+                                    <Label 
+                               Text="Artifact Name:" Grid.Row="0"  Grid.Column="1" Padding="20,0,0,-80" Grid.ColumnSpan="2"
+                               FontSize="14" TextColor="Black" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="0"/>
+
+                                    <Label Text="{Binding ARTIFACT_NAME}"  Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="1"  Padding="20,-5,0,0"
+                                      FontSize="14"  VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="0"/>
+                                    <Label 
+                               Text="Quantity:" Grid.Row="2"  Grid.Column="1" Padding="20,0,0,-20"
+                               FontSize="14" TextColor="Black" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="0"/>
+ 
+                                    <Label 
+                               Text="{Binding QUANTITY}" Grid.Row="3"  Grid.Column="1" Padding="20,0,0,0"
+                               FontSize="14"  VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="0"/>
+
+                                    <Label 
+                               Text="SalePrice:" Grid.Row="4"  Grid.Column="1" Padding="20,0,0,-10"
+                               FontSize="14" TextColor="Black" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="0"/>
+ 
+                                    <Label 
+                               Text="{Binding ARTIFACT_SALEPRICE}" Grid.Row="5"  Grid.Column="1" Padding="20,0,0,0"
+                               FontSize="14"  VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="0"/>
+
+                                    <Label 
+                               Text="Product total:" Grid.Row="6" Grid.ColumnSpan="2"  Grid.Column="1" Padding="20,0,0,-20"
+                               FontSize="14" TextColor="Black" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="0"/>
+
+                                    <Label Text="{Binding Total}"
+                               Grid.Row="7"  Grid.RowSpan="2" Grid.Column="1" Padding="20,-25,0,0"
+                               FontSize="14"  VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="0"/>
+
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

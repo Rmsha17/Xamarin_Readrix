@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Readrix.Shop.CartControls" Title="Cart" BackgroundImageSource="bb2">
+   
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <StackLayout Margin="0,10,0,10">
+                    <Label Text=" Shopping Cart" HorizontalOptions="Center" TextColor="Black" FontSize="Large" FontAttributes="Bold" />
+                </StackLayout>
+                <StackLayout VerticalOptions="Center" Orientation="Horizontal" Padding="8">
+                    <Label HorizontalOptions="Start" TextColor="Black" Text="Total Items:" FontAttributes="Bold" VerticalOptions="EndAndExpand" />
+                    <Label HorizontalOptions="Start"  TextColor="Black" x:Name="lblcount" FontAttributes="Bold"  VerticalOptions="EndAndExpand"/>
+                    <Button HorizontalOptions="EndAndExpand" CornerRadius="10" TextColor="Black" HeightRequest="40 " WidthRequest="140" FontSize="Small"  VerticalOptions="Center" Clicked="Button_Clicked" Text="Update Cart"/>
+                    
+                    </StackLayout>
+                <BoxView 
+                   HeightRequest="1"
+                   Color="Black"
+                   Margin ="5, 0, 5, 0"/>
+                <ListView SeparatorVisibility="Default" SeparatorColor="LightPink" x:Name="DataList" HasUnevenRows="True" HeightRequest="170">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="8,0,0,8" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinitionCollection>
+                                            <RowDefinition Height="90" />
+                                            <RowDefinition Height="20" />
+                                        </RowDefinitionCollection>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition  Width="90" />
+                                        <ColumnDefinition  Width="*" />
+                                        <ColumnDefinition  Width="40" />
+                                    </Grid.ColumnDefinitions>
+                                    <Frame Grid.Row="0" Grid.Column="0" Margin="2,0,0,0" Grid.RowSpan="2" Padding="5">
+                                    <Image Source="{Binding image}" WidthRequest="100" HeightRequest="120"  /></Frame>
+                                    <Label Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" TextColor="Black" Text="{Binding Name}" />
+                                    
+                                    <Label Grid.Row="1" Grid.Column="1" Margin="0,-60,0,10" Grid.RowSpan="2" Text="{Binding Detail}" />
+
+                                    <StackLayout Spacing="0" Padding="10,0,10,10"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Grid.RowSpan="2" Grid.Column="2">
+                                        <ImageButton Source="Cross.png" x:Name="btnRemove" Clicked="btnRemove_Clicked" CommandParameter="{Binding .}"/>
+                                    </StackLayout>
+                                    
+
+                                </Grid>
+
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <BoxView 
+                   HeightRequest="1"
+                   Color="Black"
+                   Margin ="5, 0, 5, 0"/>
+                <StackLayout VerticalOptions="Center" Orientation="Horizontal" Padding="8" >
+                    
+                    <Label HorizontalOptions="StartAndExpand" FontAttributes="Bold" TextColor="Black"  FontSize="Small" Text="Sub Total"/>
+                    <Label HorizontalOptions="EndAndExpand" FontAttributes="Bold" TextColor="Black"  FontSize="Small"  x:Name="lblTotal"/>
+                    <Label HorizontalOptions="End" FontAttributes="Bold" TextColor="Black"  FontSize="Small" Text="Rs"/>
+
+                </StackLayout>
+                <StackLayout>
+                    <Label HorizontalOptions="End" FontAttributes="None" TextColor="Black"  FontSize="Micro" Text="(Totol does not Include Shipping)"/>
+                    <Button Text="Check out" Clicked="ToolbarItem_Clicked" CornerRadius="10" BackgroundColor="Black" Margin="10,10,10,0"/>
+                    <Button Text="Checkout with Paypal" Clicked="Button_Clicked_1" CornerRadius="10" Margin="10,10,10,0"/>
+                </StackLayout>
+                <Label/>
+                <Label/>
+                <Label/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

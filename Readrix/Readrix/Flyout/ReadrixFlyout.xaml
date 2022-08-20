@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Readrix.Flyout.ReadrixFlyout"
+             xmlns:local="clr-namespace:Readrix.ReaderLoginSystem"
+             xmlns:Schedule="clr-namespace:Readrix.Schedule"
+             xmlns:local1="clr-namespace:Readrix.Views" 
+             xmlns:bookmark="clr-namespace:Readrix.Addbookmark" 
+             xmlns:local2="clr-namespace:Readrix.Genre" 
+             xmlns:Writer="clr-namespace:Readrix.Writers" 
+             xmlns:premium="clr-namespace:Readrix.Premiumship" 
+             xmlns:Shop="clr-namespace:Readrix.Shop" 
+             xmlns:Setting="clr-namespace:Readrix.Settingreader" 
+             xmlns:flyout="clr-namespace:Readrix.Flyout"
+             Title="Home" x:DataType="flyout:ReadrixFlyout" BackgroundColor="DarkCyan">
+            
+    <Shell.FlyoutHeader>
+        <local:ReadrixFlyoutHeader/>
+    </Shell.FlyoutHeader>
+    <FlyoutItem Title="Readrix"
+               Shell.TabBarIsVisible="False"
+               FlyoutDisplayOptions="AsMultipleItems" >
+
+        <Tab Icon="ic_action_home.png" Title="Home">
+            <ShellContent ContentTemplate="{DataTemplate local1:Home}"/>
+        </Tab>
+        <Tab Icon="ic_action_genres.png" Title="Genre">
+            <ShellContent ContentTemplate="{DataTemplate local1:Genres}"/>
+        </Tab>
+        <Tab Icon="ic_action_schedule.png" Title="Schedule">
+            <ShellContent ContentTemplate="{DataTemplate Schedule:Schedulepage}"/>
+        </Tab>
+        <Tab Icon="ic_action_shop.png" Title="Shop">
+            <ShellContent ContentTemplate="{DataTemplate Shop:ShopPage}"/>
+        </Tab>
+        <Tab Icon="ic_action_premium.png" Title="Premium">
+            <ShellContent ContentTemplate="{DataTemplate premium:Premiumpage}"/>
+        </Tab>
+        <Tab Icon="ic_action_bookmarks.png" Title="Bookmark">
+            <ShellContent ContentTemplate="{DataTemplate bookmark:Bookmarklist}"/>
+        </Tab>
+         <Tab Icon="ic_action_settings.png" Title="Settings">
+            <ShellContent ContentTemplate="{DataTemplate Setting:Settingspage}"/>
+        </Tab>
+        
+    </FlyoutItem>
+    <FlyoutItem Title="Readrix"
+               Shell.TabBarIsVisible="False"
+               FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent Title="Contact us" Icon="ic_action_contact.png" ContentTemplate="{DataTemplate local1:Contact}"/>
+        <ShellContent Title="Writers" Icon="ic_action_writers.png" ContentTemplate="{DataTemplate Writer:Writerlist}"/>
+        <ShellContent Title="About" Icon="ic_action_about.png" ContentTemplate="{DataTemplate local1:AboutPage}"/>
+    </FlyoutItem>
+</Shell>
+    

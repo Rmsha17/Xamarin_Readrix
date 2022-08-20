@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Readrix.Genre.Artifactlist" Title="{Binding Title}" BackgroundImageSource="bb2.jpg">
+
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <StackLayout>
+                    <Label x:Name="lblartifact" IsVisible="false" TextColor="Black" Margin="20,0,50,20" FontAttributes="Bold" FontSize="Subtitle"/> 
+               </StackLayout>
+                <CollectionView  x:Name="ListData" SelectionMode="Single"  SelectionChanged="ListData_SelectionChanged" ItemsLayout="VerticalGrid, 2">
+                    <CollectionView.ItemTemplate >
+
+                        <DataTemplate>
+                            <Grid Padding="10">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup Name="CommonStates">
+                                        <VisualState Name="Normal" />
+                                        <VisualState Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="Transparent" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="50" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="80"/>
+                                </Grid.ColumnDefinitions>
+                                <Frame  Grid.RowSpan="4" 
+                              Grid.ColumnSpan="2" Padding="5">
+                                    <Image 
+                                Source="{Binding ARTIFACT_PICTURE}"
+                                x:Name="artimage"
+                                Aspect="Fill"
+                                HeightRequest="150"
+                                WidthRequest="150" />
+                                </Frame>
+                               
+
+                                <Label Grid.Row="4"
+                           Grid.ColumnSpan="2" 
+                       Text="{Binding ARTIFACT_NAME}"
+                       FontAttributes="Bold" TextColor="Black"
+                       FontSize="14"/>
+
+                                <Label Grid.Row="5"
+                        Grid.ColumnSpan="2"
+                              Grid.Column="0" 
+                        Text="{Binding SubCategory_Name}"
+                       FontAttributes="Bold"
+                       FontSize="Micro"/>
+                            </Grid>
+                           
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

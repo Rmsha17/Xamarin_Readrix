@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+    
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:SegmentedControl.FormsPlugin.Abstractions;assembly=SegmentedControl.FormsPlugin.Abstractions"
+             x:Class="Readrix.Schedule.Schedulepage" BackgroundImageSource="bb1" Title="Schedule">
+    
+    
+    <StackLayout x:Name="segContainer"
+                 Padding="10"
+                 Spacing="10">
+        <StackLayout Padding="0" Margin="0" HorizontalOptions="FillAndExpand">
+            <Frame HeightRequest="90" BackgroundColor="DarkCyan" CornerRadius="10" Padding="0" Margin="0">
+                <Image Source="schedules.png" Aspect="AspectFill" Margin="0"/>
+            </Frame>
+        </StackLayout>
+
+        <controls:SegmentedControl BackgroundColor="White"  SelectedTextColor="Black" TintColor="DarkCyan" x:Name="SegControl" ValueChanged="Handle_ValueChanged" DisabledColor="Gray">
+                    <controls:SegmentedControl.Children>
+                        <controls:SegmentedControlOption  Text="Daily" />
+                        <controls:SegmentedControlOption  Text="SUN" />
+                        <controls:SegmentedControlOption  Text="MON" />
+                        <controls:SegmentedControlOption  Text="TUE" />
+                        <controls:SegmentedControlOption  Text="WED" />
+                        <controls:SegmentedControlOption  Text="THU" />
+                        <controls:SegmentedControlOption  Text="FRI" />
+                        <controls:SegmentedControlOption  Text="SAT" />
+            </controls:SegmentedControl.Children>
+                </controls:SegmentedControl>
+        <StackLayout x:Name="SegContent" Margin="5,0,5,0" />
+      
+
+    </StackLayout>
+</ContentPage>

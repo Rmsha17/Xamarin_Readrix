@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="Readrix.ReaderLoginSystem.ReaderRegistration" Title="Register" NavigationPage.HasNavigationBar="False" >
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout >
+                <Grid>
+                    <StackLayout Padding="0" Margin="0" HorizontalOptions="FillAndExpand">
+                        <Frame HeightRequest="180" BackgroundColor="DarkCyan" Padding="0" Margin="0">
+                            <Image Source="cp1.jpg" Aspect="AspectFill" Margin="0"/>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout Padding="0" Margin="10,110,10,0" >
+                        <Image Source="Gradient.png" Aspect="Fill" />
+                    </StackLayout>
+                    <StackLayout Padding="0" Margin="15,120,20,15">
+                        <Label Text="SIGN UP" TextColor="Black" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                    </StackLayout>
+                    <StackLayout Padding="0" Margin="15,160,15,0">
+                        <Label x:Name="filename" FontSize="Large"  HorizontalOptions="Center" FontAttributes="Bold" IsVisible="False" ></Label>
+                        <Frame BackgroundColor="SkyBlue"  CornerRadius="20" Padding="0" Margin="5" HeightRequest="150" WidthRequest="80" BorderColor="Black">
+                            <Image Source="image4.jpeg" x:Name="imgfile"  Aspect="AspectFill" ></Image>
+                        </Frame>
+                        <Button Text="Pick image" Clicked="Button_Clicked_1" BackgroundColor="HotPink" CornerRadius="20" Margin="10,-5,10,0"></Button>
+
+                    </StackLayout>
+                    <StackLayout Padding="0" Margin="15,380,15,30" HeightRequest="300" >
+                        <StackLayout Padding="0" Margin="15,0,15,0"  >
+
+                            <Frame BackgroundColor="Transparent" BorderColor="Black"  Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
+                                <StackLayout Orientation="Horizontal">
+                                    <Frame BackgroundColor="SkyBlue" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
+                                        <Image Source="Usericon.png" Aspect="AspectFill" Margin="0"/>
+                                    </Frame>
+
+                                    <Entry Placeholder="Name" IsTextPredictionEnabled="True" Keyboard="Chat" TextColor="DarkCyan" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0" x:Name="txtName"/>
+                                </StackLayout>
+                            </Frame>
+                            <Label x:Name="lblEmailVali" FontSize="Micro"/>
+                            <Frame BackgroundColor="Transparent" BorderColor="Black" Margin="0,0,0,0" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
+                                <StackLayout Orientation="Horizontal">
+                                    <Frame BackgroundColor="SkyBlue" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
+                                        <Image Source="mail1.png" Aspect="AspectFill" Margin="0"/>
+                                    </Frame>
+
+                                    <Entry Placeholder="Email" TextChanged="txtEmail_TextChanged" IsTextPredictionEnabled="True" Keyboard="Email" TextColor="DarkCyan" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0" x:Name="txtEmail"/>
+
+                                </StackLayout>
+                            </Frame>
+
+                            <Label x:Name="lblPassVali" FontSize="Micro" />
+                            <Frame BackgroundColor="Transparent" BorderColor="Black" Margin="0,0,0,0" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
+                                <StackLayout Orientation="Horizontal">
+                                    <Frame BackgroundColor="SkyBlue" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
+                                        <Image Source="passwordlock.jpg" Aspect="AspectFill" Margin="0"/>
+                                    </Frame>
+
+                                    <Entry Placeholder="Password" TextChanged="txtPassword_TextChanged" Keyboard="Chat" IsPassword="True" TextColor="DarkCyan" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"  x:Name="txtPassword"/>
+
+                                </StackLayout>
+                            </Frame>
+                            <Label x:Name="lbladdVali" FontSize="Micro"/>
+                            <Frame BackgroundColor="Transparent" BorderColor="Black" Margin="0,0,0,0" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
+                                <StackLayout Orientation="Horizontal">
+                                    <Frame BackgroundColor="SkyBlue" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
+                                        <Image Source="address.jpg" Aspect="AspectFill" Margin="0"/>
+                                    </Frame>
+
+                                    <Entry TextChanged="txtAddress_TextChanged" Placeholder="Address" IsTextPredictionEnabled="True" Keyboard="Default" TextColor="DarkCyan" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"  x:Name="txtAddress"/>
+                                </StackLayout>
+                            </Frame>
+                            <Label x:Name="lblPhoneVali" FontSize="Micro"/>
+                            <Frame BackgroundColor="Transparent" BorderColor="Black" Margin="0,0,0,0" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
+                                <StackLayout Orientation="Horizontal">
+                                    <Frame BackgroundColor="SkyBlue" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
+                                        <Image Source="phone.png" Aspect="AspectFill" Margin="0"/>
+                                    </Frame>
+
+                                    <Entry Placeholder="Contact" TextChanged="txtContact_TextChanged" IsTextPredictionEnabled="True" Keyboard="Numeric" TextColor="DarkCyan" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"  x:Name="txtContact"/>
+
+                                </StackLayout>
+                            </Frame>
+
+
+                            <StackLayout  Orientation="Horizontal" Margin="0,0,0,15">
+                                <CheckBox IsChecked="False" Color="DarkCyan" />
+                                <Label Text="Remember me" FontSize="Micro" TextColor="Black" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                                <Label Text="Forgot Password" Padding="20,0,0,0" TextColor="DarkCyan" FontAttributes="Bold" HorizontalOptions="End" FontSize="Micro" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                            </StackLayout>
+                            <Button Text="SIGN UP" BackgroundColor="DarkCyan" TextColor="White" CornerRadius="30" Margin="0,-18,0,0"  Clicked="RegisterAccount" />
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                <Label Text="Already Connected ?" TextColor="Black" FontSize="Small"/>
+                                <Label Text="Sign In" TextColor="DarkCyan" FontSize="Small" >
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                    </Label.GestureRecognizers>
+
+                                </Label>
+
+                            </StackLayout>
+
+
+                        </StackLayout>
+
+                    </StackLayout>
+
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

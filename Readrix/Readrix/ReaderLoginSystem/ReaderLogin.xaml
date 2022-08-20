@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="Readrix.ReaderLoginSystem.ReaderLogin" NavigationPage.HasNavigationBar="False" Title="Sign In">
+    <StackLayout BackgroundColor="#e6e6e6">
+            <Grid>
+                <StackLayout Padding="0" Margin="0" HorizontalOptions="FillAndExpand" >
+                    <Frame HeightRequest="180" BackgroundColor="DarkCyan" Padding="0" Margin="0">
+                        <Image Source="cp1.jpg" Aspect="AspectFill" Margin="0"/>
+                    </Frame>
+                </StackLayout>
+                <StackLayout Padding="0" Margin="10,100,10,0" HorizontalOptions="FillAndExpand">
+                    <Image Source="Gradient.png" Aspect="Fill" />
+                </StackLayout>
+                <StackLayout Padding="0" Margin="15,170,20,15">
+                                <Label Text="SIGN IN" TextColor="Black" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                </StackLayout>
+
+                <StackLayout Padding="0" Margin="30,230,30,0" HorizontalOptions="FillAndExpand">
+
+                    <Frame BackgroundColor="Transparent" BorderColor="Black" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
+                        <StackLayout Orientation="Horizontal">
+                            <Frame BackgroundColor="SkyBlue" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
+                                <Image Source="Usericon.png" Aspect="AspectFill" Margin="0"/>
+                            </Frame>
+
+                            <Entry Placeholder="Email" TextColor="Black" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0" x:Name="txtEmail"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame BackgroundColor="Transparent" BorderColor="Black" Margin="0,15,0,0" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
+                        <StackLayout Orientation="Horizontal">
+                            <Frame BackgroundColor="SkyBlue" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
+                                <Image Source="passwordlock.jpg" Aspect="AspectFill" Margin="0"/>
+                            </Frame>
+
+                            <Entry Placeholder="Password" IsPassword="True" TextColor="Black" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"  x:Name="txtPassword"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <StackLayout  Orientation="Horizontal">
+                        <CheckBox IsChecked="False" Color="DarkCyan" />
+                        <Label Text="Remember me" TextColor="Black" FontSize="Micro" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+
+                    <Label Text="Forgot Password" TextColor="DarkCyan" FontAttributes="Bold" HorizontalOptions="StartAndExpand" Padding="20,0,0,0" FontSize="Micro" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+
+
+                </StackLayout>
+
+                    <Button Text="SIGN IN" Clicked="Signin_Clicked" x:Name="Signin" BackgroundColor="DarkCyan" TextColor="White" CornerRadius="30" />
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Label Text="Still Not Connected ?" TextColor="Black" FontSize="Small"/>
+                        <Label Text="Sign Up" TextColor="DarkCyan" FontSize="Small">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+   
+</ContentPage>

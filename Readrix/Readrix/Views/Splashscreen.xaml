@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Readrix.Views.Splashscreen" 
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms" BackgroundImageSource="gradient_cyan.png" 
+             >
+    <ContentPage.Content>
+ <StackLayout>
+      <BoxView 
+       HeightRequest="3"
+       Color="Black"
+       Margin ="0, 10, 0, 0"/>
+  <Grid>
+
+    <BoxView
+    VerticalOptions="Fill" HorizontalOptions="StartAndExpand" WidthRequest="3" HeightRequest="400" Margin="10,-20,0,0" Color="Black"/>
+
+    <forms:AnimationView
+    x:Name="animationView"
+    Animation="robot.json"
+    AutoPlay="True"
+    RepeatCount="3"           
+    RepeatMode="Infinite" Margin="23,-25,10,5"
+    HeightRequest="600"
+    WidthRequest="300"/>
+
+    <BoxView
+    VerticalOptions="Fill" HorizontalOptions="EndAndExpand" WidthRequest="3" HeightRequest="400" Margin="0,-20,10,0" Color="Black"/>
+    </Grid>
+    <BoxView 
+    HeightRequest="3"
+    Color="Black"
+    Margin ="0, -40, 0, 10"/>
+    </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

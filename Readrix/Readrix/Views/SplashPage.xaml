@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Readrix.Views.SplashPage" BackgroundColor="White"  NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout>
+        <BoxView 
+       HeightRequest="3" WidthRequest="400"
+       Color="DarkCyan"
+       HorizontalOptions="StartAndExpand"
+       Margin ="10, 10, 10, 0"/>
+        <Grid>
+            <Image Source="startingpage.jpg" Aspect="AspectFit"/>
+               <StackLayout HorizontalOptions="Center" VerticalOptions="End" Padding="10,0,0,10" >
+                
+                <Button Text=" GET STARTED "
+                        BackgroundColor="HotPink" 
+                        BorderColor="DarkCyan" BorderWidth="2"
+                        x:Name="getstarted" TextColor="White"
+                        CornerRadius="30" Font="Bold"
+                        FontSize="18" Clicked="Getstarted_Clicked" />
+                <Label Text="Let's start a new fun" FontSize="Micro" 
+                       HorizontalOptions="CenterAndExpand"/>
+            </StackLayout>
+        </Grid>
+       <BoxView 
+       HeightRequest="3" WidthRequest="400"
+       Color="DarkCyan"
+       HorizontalOptions="End"
+       Margin ="10, 60, 10,0"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

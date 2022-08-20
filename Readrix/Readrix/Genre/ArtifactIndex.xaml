@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Readrix.Genre.ArtifactIndex" Title="{Binding Title}" BackgroundImageSource="bb2.jpg" HeightRequest="260">
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+
+                <StackLayout >
+                    <Frame HeightRequest="300" WidthRequest="70"  CornerRadius="10" Margin="40,20,40,20">
+                        <Image x:Name="artifactimage" Aspect="AspectFill" Margin="0" />
+                    </Frame>
+                </StackLayout>
+
+                <StackLayout>
+                    <Button Text="bookmark" HeightRequest="50" WidthRequest="200"
+                            FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="Center" CornerRadius="40" Margin="40,0,40,20"
+                            x:Name="btnbookmark" BorderWidth="3" BorderColor="White" Clicked="Button_Clicked"/>
+
+                </StackLayout>
+                <StackLayout>
+                    <Label  x:Name="lblname" Margin="20,0,20,0"
+                 FontSize="Medium" FontAttributes="Bold" TextColor="Black" />
+                    <!--<Label Text="Artifact Details" Margin="20,0,20,0" FontAttributes="Bold" TextColor="Black"></Label>-->
+
+                    <Label Margin="20,0,20,0"  x:Name="lblid" IsVisible="false" TextColor="Black"></Label>
+                    <Label Margin="20,0,20,0"  x:Name="lbldate" TextColor="Black"></Label>
+                    <Label Margin="20,0,20,0" x:Name="lblstatus" TextColor="Black"></Label>
+
+                    <Label Text="Description" Margin="20,20,20,0" FontAttributes="Bold" FontSize="Medium" TextColor="Black"/>
+                    <Label x:Name="lbldescription" Margin="20,20,20,20"  Padding="5,0,5,0" TextColor="Black" ></Label>
+                    <Label Text="Episodes" Margin="20,0,20,20" FontAttributes="Bold" FontSize="Medium" TextColor="Black"/>
+                    <ListView x:Name="ListData" ItemTapped="ListData_ItemTapped" Margin="20,0,20,0" HeightRequest="250" BackgroundColor="Transparent">
+
+                        <ListView.ItemTemplate TextColor="Black">
+                            <DataTemplate>
+                                <TextCell TextColor="Black" Text="{Binding EPISODE_NO}" Detail="{Binding EPISODE_DATE}"  />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Label/>
+                    <Label Text="Your Feedback" Margin="20,0,20,0" FontAttributes="Bold" FontSize="Medium" TextColor="Black"/>
+                    <Editor Keyboard="Plain" Margin="20,0,20,0" AutoSize="TextChanges" MaxLength="180" Placeholder="Enter your feedback"  x:Name="txtmessage"/>
+                    <Button Margin="20,0,20,20" FontAttributes="Bold" HeightRequest="45" Text="Post Feedback "
+                            HorizontalOptions="StartAndExpand" x:Name="btnfeeback" Clicked="btnfeeback_Clicked"
+                            VerticalOptions="Center" FontSize="Micro" CornerRadius="40"/>
+                    <Label Text="Feedbacks" Margin="20,0,20,20" FontAttributes="Bold" FontSize="Small" TextColor="Black"/>
+                    <ListView x:Name="listfeedback" ItemTapped="listfeedback_ItemTapped" HeightRequest="250" Margin="20,0,20,0" BackgroundColor="Transparent">
+
+                        <ListView.ItemTemplate TextColor="Black">
+                            <DataTemplate>
+                                <ImageCell Text="{Binding READER_NAME}"  Detail="{Binding FEEDBACK_DESCRIPTION}"  ImageSource="{Binding READER_IMAGE}"></ImageCell>
+                               
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <Label/>
+
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>

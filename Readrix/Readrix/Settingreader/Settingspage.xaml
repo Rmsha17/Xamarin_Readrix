@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Readrix.Settingreader.Settingspage" Title="Settings">
+    <ContentPage.Content>
+        <StackLayout Padding="10" Spacing="10" >
+            <StackLayout Padding="0" Margin="0" HorizontalOptions="FillAndExpand" >
+                <Frame HeightRequest="90" BackgroundColor="DarkCyan" Padding="0" Margin="0" CornerRadius="10">
+                    <Image Source="settings.png" Aspect="AspectFill" Margin="0" />
+                </Frame>
+            </StackLayout>
+
+            <ListView ItemTapped="ListView_ItemTapped" >
+                <ListView.ItemsSource >
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String >Booked Orders</x:String>
+                        <x:String>Cancelled Orders</x:String>
+                        <x:String>Login to another Account</x:String>
+                        <x:String>Manage Profile</x:String>
+                        <x:String>Delete Account</x:String>
+                        <x:String>Logout</x:String>
+                       
+                    </x:Array>
+                </ListView.ItemsSource>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

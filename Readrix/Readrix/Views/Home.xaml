@@ -1,0 +1,381 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Readrix.Views.Home" Title="Home" BackgroundImageSource="bb2">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout  Padding="10"
+                 Spacing="10">
+                <StackLayout Padding="0" Margin="0" HorizontalOptions="FillAndExpand" >
+                <Frame HeightRequest="90" BackgroundColor="DarkCyan" Padding="0" Margin="0" CornerRadius="10">
+                    <Image Source="home.png" Aspect="AspectFill" Margin="0"/>
+                </Frame>
+            </StackLayout>
+            <StackLayout Padding="0" Margin="0" HorizontalOptions="FillAndExpand">
+                <Label TextColor="Black" FontSize="Medium" Padding="10,5,10,2" FontAttributes="Bold" Text="Top Rated Comics"/>
+            </StackLayout>
+                <CollectionView x:Name="ColltopratedComic" SelectionMode="Single" SelectionChanged="ColltopratedComic_SelectionChanged"
+                ItemsLayout="HorizontalList" HeightRequest="260">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="5">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup Name="CommonStates">
+                                    <VisualState Name="Normal" />
+                                    <VisualState Name="Selected">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="Transparent" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="90" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="10" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="40" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="70"/>
+                            </Grid.ColumnDefinitions>
+                            <Frame  Grid.RowSpan="4" 
+                              Grid.ColumnSpan="2" Padding="5">
+                                <Image 
+                                Source="{Binding ARTIFACT_PICTURE}"
+                                x:Name="artimage"
+                                Aspect="Fill"
+                                HeightRequest="70"
+                                WidthRequest="150" />
+                            </Frame>
+
+
+                       <Label Grid.Row="4"
+                       Grid.ColumnSpan="2" 
+                       Text="{Binding ARTIFACT_NAME}"
+                       FontAttributes="Bold" TextColor="Black"
+                       FontSize="14"/>
+                            
+                       <Label Grid.Row="5"
+                        Grid.ColumnSpan="2"
+                              Grid.Column="0" 
+                        Text="{Binding SubCategory_Name}"
+                       FontAttributes="Bold"
+                       FontSize="Micro"/>
+                        </Grid>
+
+                    </DataTemplate>
+
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+           <StackLayout Padding="0" Margin="0" HorizontalOptions="FillAndExpand">
+                <Label TextColor="Black" FontSize="Medium" Padding="10,5,10,2" FontAttributes="Bold" Text="Top Rated Novels"/>
+            </StackLayout>
+                <CollectionView x:Name="ColltopratedNovels" SelectionMode="Single" SelectionChanged="ColltopratedNovels_SelectionChanged"
+                ItemsLayout="HorizontalGrid, 1" HeightRequest="260">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="5">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup Name="CommonStates">
+                                    <VisualState Name="Normal" />
+                                    <VisualState Name="Selected">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="Transparent" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+
+                            <Grid.RowDefinitions>
+                               <RowDefinition Height="90" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="10" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="40" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="60"/>
+                            </Grid.ColumnDefinitions>
+                            <Frame  Grid.RowSpan="4" 
+                              Grid.ColumnSpan="2" Padding="5">
+                                <Image 
+                                Source="{Binding ARTIFACT_PICTURE}"
+                                x:Name="artimage"
+                                Aspect="Fill"
+                                HeightRequest="70"
+                                WidthRequest="150" />
+                            </Frame>
+
+
+                       <Label Grid.Row="4"
+                       Grid.ColumnSpan="2" 
+                       Text="{Binding ARTIFACT_NAME}"
+                       FontAttributes="Bold" TextColor="Black"
+                       FontSize="14"/>
+                            
+                       <Label Grid.Row="5"
+                        Grid.ColumnSpan="2"
+                              Grid.Column="0" 
+                        Text="{Binding SubCategory_Name}"
+                       FontAttributes="Bold"
+                       FontSize="Micro"/>
+                        </Grid>
+
+                    </DataTemplate>
+
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+         
+            <StackLayout Padding="0" Margin="0" HorizontalOptions="FillAndExpand">
+                <Label TextColor="Black" FontSize="Medium" Padding="10,5,10,2" FontAttributes="Bold" Text="Top Featured"/>
+            </StackLayout>
+                <CollectionView x:Name="Colltopfeatured" SelectionMode="Single" SelectionChanged="Colltopfeatured_SelectionChanged"
+                ItemsLayout="HorizontalGrid, 1" HeightRequest="260">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="5">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup Name="CommonStates">
+                                    <VisualState Name="Normal" />
+                                    <VisualState Name="Selected">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="Transparent" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+
+                            <Grid.RowDefinitions>
+                               <RowDefinition Height="90" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="10" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="40" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="60"/>
+                            </Grid.ColumnDefinitions>
+                            <Frame  Grid.RowSpan="4" 
+                              Grid.ColumnSpan="2" Padding="5">
+                                <Image 
+                                Source="{Binding ARTIFACT_PICTURE}"
+                                x:Name="artimage"
+                                Aspect="Fill"
+                                HeightRequest="70"
+                                WidthRequest="150" />
+                            </Frame>
+
+
+                       <Label Grid.Row="4"
+                       Grid.ColumnSpan="2" 
+                       Text="{Binding ARTIFACT_NAME}"
+                       FontAttributes="Bold" TextColor="Black"
+                       FontSize="14"/>
+                            
+                       <Label Grid.Row="5"
+                        Grid.ColumnSpan="2"
+                              Grid.Column="0" 
+                        Text="{Binding SubCategory_Name}"
+                       FontAttributes="Bold"
+                       FontSize="Micro"/>
+                        </Grid>
+
+                    </DataTemplate>
+
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+           <StackLayout Padding="0" Margin="0" HorizontalOptions="FillAndExpand">
+                <Label TextColor="Black" FontSize="Medium"  Padding="10,5,10,2" FontAttributes="Bold" Text="Top Newest"/>
+            </StackLayout>
+                <CollectionView x:Name="Collectionnewest" SelectionMode="Single" SelectionChanged="Collectionnewest_SelectionChanged"
+                ItemsLayout="HorizontalGrid, 1" HeightRequest="260">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="5">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup Name="CommonStates">
+                                    <VisualState Name="Normal" />
+                                    <VisualState Name="Selected">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="Transparent" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+
+                            <Grid.RowDefinitions>
+                               <RowDefinition Height="90" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="10" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="40" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="60"/>
+                            </Grid.ColumnDefinitions>
+                            <Frame  Grid.RowSpan="4" 
+                              Grid.ColumnSpan="2" Padding="5">
+                                <Image 
+                                Source="{Binding ARTIFACT_PICTURE}"
+                                x:Name="artimage"
+                                Aspect="Fill"
+                                HeightRequest="70"
+                                WidthRequest="150" />
+                            </Frame>
+
+
+                       <Label Grid.Row="4"
+                       Grid.ColumnSpan="2" 
+                       Text="{Binding ARTIFACT_NAME}"
+                       FontAttributes="Bold" TextColor="Black"
+                       FontSize="14"/>
+                            
+                       <Label Grid.Row="5"
+                        Grid.ColumnSpan="2"
+                              Grid.Column="0" 
+                        Text="{Binding SubCategory_Name}"
+                       FontAttributes="Bold"
+                       FontSize="Micro"/>
+                        </Grid>
+
+                    </DataTemplate>
+
+                </CollectionView.ItemTemplate>
+               </CollectionView>
+
+                <StackLayout Padding="0" Margin="0" HorizontalOptions="FillAndExpand">
+                    <Label TextColor="Black" FontSize="Medium" Padding="10,5,10,2" FontAttributes="Bold" Text="Top Romance Comics"/>
+                </StackLayout>
+                <CollectionView x:Name="Colltopromance" SelectionMode="Single" SelectionChanged="Colltopromance_SelectionChanged"
+                ItemsLayout="HorizontalGrid, 1" HeightRequest="260">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="5">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup Name="CommonStates">
+                                        <VisualState Name="Normal" />
+                                        <VisualState Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="Transparent" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="90" />
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="10" />
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="40" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="60"/>
+                                </Grid.ColumnDefinitions>
+                                <Frame  Grid.RowSpan="4" 
+                              Grid.ColumnSpan="2" Padding="5">
+                                    <Image 
+                                Source="{Binding ARTIFACT_PICTURE}"
+                                x:Name="artimage"
+                                Aspect="Fill"
+                                HeightRequest="70"
+                                WidthRequest="150" />
+                                </Frame>
+
+
+                                <Label Grid.Row="4"
+                       Grid.ColumnSpan="2" 
+                       Text="{Binding ARTIFACT_NAME}"
+                       FontAttributes="Bold" TextColor="Black"
+                       FontSize="14"/>
+
+                                <Label Grid.Row="5"
+                        Grid.ColumnSpan="2"
+                              Grid.Column="0" 
+                        Text="{Binding SubCategory_Name}"
+                       FontAttributes="Bold"
+                       FontSize="Micro"/>
+                            </Grid>
+
+                        </DataTemplate>
+
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <StackLayout Padding="0" Margin="0" HorizontalOptions="FillAndExpand">
+                    <Label TextColor="Black" FontSize="Medium" Padding="10,5,10,2" FontAttributes="Bold" Text="Top Horror Comics"/>
+                </StackLayout>
+                <CollectionView x:Name="Colltophorror" SelectionMode="Single" SelectionChanged="Colltopcomedy_SelectionChanged"
+                ItemsLayout="HorizontalGrid, 1" HeightRequest="260">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="5">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup Name="CommonStates">
+                                        <VisualState Name="Normal" />
+                                        <VisualState Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="Transparent" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="90" />
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="10" />
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="40" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="60"/>
+                                </Grid.ColumnDefinitions>
+                                <Frame  Grid.RowSpan="4" 
+                              Grid.ColumnSpan="2" Padding="5">
+                                    <Image 
+                                Source="{Binding ARTIFACT_PICTURE}"
+                                x:Name="artimage"
+                                Aspect="Fill"
+                                HeightRequest="70"
+                                WidthRequest="150" />
+                                </Frame>
+
+
+                                <Label Grid.Row="4"
+                       Grid.ColumnSpan="2" 
+                       Text="{Binding ARTIFACT_NAME}"
+                       FontAttributes="Bold" TextColor="Black"
+                       FontSize="14"/>
+
+                                <Label Grid.Row="5"
+                        Grid.ColumnSpan="2"
+                              Grid.Column="0" 
+                        Text="{Binding SubCategory_Name}"
+                       FontAttributes="Bold"
+                       FontSize="Micro"/>
+                            </Grid>
+
+                        </DataTemplate>
+
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </StackLayout> 
+      </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

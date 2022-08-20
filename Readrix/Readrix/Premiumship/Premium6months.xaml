@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:SegmentedControl.FormsPlugin.Abstractions;assembly=SegmentedControl.FormsPlugin.Abstractions"
+             x:Class="Readrix.Premiumship.Premium6months" BackgroundColor="White">
+
+    <ContentView.Content>
+        <ScrollView  AbsoluteLayout.LayoutFlags="All" VerticalScrollBarVisibility="Never">
+       
+            <Grid Padding="13">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Margin="10,0,2,0" Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+                    <Label Text="Product" TextColor="Black" FontAttributes="Bold"  FontSize="Medium"/>
+                <Label/>
+                    <Label x:Name="lblname" TextColor="Black" FontSize="Medium"  HorizontalOptions="EndAndExpand" />
+            </StackLayout>
+                <StackLayout Margin="10,0,18,0"  Orientation="Horizontal" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" >
+                    <Label Text="Product Price " TextColor="Black" FontAttributes="Bold" FontSize="Medium" />
+            <Label/>
+                    <Label x:Name="lblprice" TextColor="Black" FontSize="Medium" HorizontalOptions="EndAndExpand" />
+            </StackLayout>
+                <StackLayout  Margin="10,0,4,0" Orientation="Horizontal" Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="3">
+                    <Label Text="Duration" TextColor="Black" FontAttributes="Bold" FontSize="Medium"/>
+                <Label/>
+                    <Label x:Name="lblduration" TextColor="Black" FontSize="Medium" HorizontalOptions="EndAndExpand"/>
+                    <Label Text="Months" TextColor="Black" FontSize="Medium" />
+            </StackLayout >
+                <StackLayout Margin="10,0,10,0" Orientation="Vertical"  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3">
+                    <Label Text="Featues Includes:" FontAttributes="Bold" TextColor="Black" FontSize="16"/>
+                    <Label Text="More Services" TextColor="Black"/>
+                    <Label Text="Add_one" TextColor="Black"/>
+                    <Label Text="Advantages" TextColor="Black"/>
+                    <Label Text="Bounses" TextColor="Black"/>
+                    <Label Text="More Features" TextColor="Black"/>
+            </StackLayout>
+                <StackLayout Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3">
+                    <Button Text=" Confirm and Pay " Clicked="Button_Clicked" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" Padding="0,-3,0,0" WidthRequest="300" />
+                </StackLayout>
+            </Grid>
+           
+          
+      
+    </ScrollView>
+    </ContentView.Content>
+</ContentView>

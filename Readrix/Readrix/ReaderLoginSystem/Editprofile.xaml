@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Readrix.ReaderLoginSystem.Editprofile" BackgroundImageSource="bb1" Title="Manage Profile">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout HeightRequest="1030" Padding="10" Spacing="10">
+                <Grid >
+                    <StackLayout Padding="0" Margin="0" HorizontalOptions="FillAndExpand" >
+                        <Frame HeightRequest="90" BackgroundColor="DarkCyan" Padding="0" Margin="0" CornerRadius="10">
+                            <Image Source="editprofile.png" Aspect="AspectFill" Margin="0" />
+                        </Frame>
+                    </StackLayout>
+
+                   
+                    <StackLayout Padding="0" Margin="15,110,15,0">
+                        <Label Text="Profile Image"  HorizontalOptions="Center" FontAttributes="Bold"/>
+                        <Frame BackgroundColor="SkyBlue"  CornerRadius="20" Padding="0" Margin="5" HeightRequest="150" WidthRequest="80" BorderColor="Black">
+                            <Image  x:Name="imgfile"  Aspect="AspectFill" ></Image>
+                        </Frame>
+                        <Button Text="Update Image" Clicked="Button_Clicked_1" BackgroundColor="HotPink" CornerRadius="20" Margin="10,0,10,0"></Button>
+
+                    </StackLayout>
+
+                    <StackLayout Padding="0" Margin="15,380,15,30" >
+                        <StackLayout Padding="0" Margin="15,0,15,0"  >
+
+                            <Label Text="Username"  HorizontalOptions="Center" FontAttributes="Bold"/>
+                            <Frame BackgroundColor="Transparent" BorderColor="Black"  Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="20">
+                                <StackLayout Orientation="Horizontal">
+                                   
+                                    <Entry  IsTextPredictionEnabled="True" Keyboard="Chat" TextColor="DarkCyan" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0" x:Name="txtName"/>
+                                </StackLayout>
+                            </Frame>
+
+                            <Label Text="Email"  HorizontalOptions="Center" FontAttributes="Bold"/>
+                            <Frame BackgroundColor="Transparent" BorderColor="Black" Margin="0,15,0,0" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="20">
+                                <StackLayout Orientation="Horizontal" >
+                                    
+                                    <Entry Placeholder="Email" IsTextPredictionEnabled="True" 
+                                       Keyboard="Email" IsReadOnly="True" TextColor="DarkCyan" FontAttributes="None"
+                                           HorizontalOptions="FillAndExpand"  Margin="0,0,20,0"  x:Name="txtEmail"/>
+                                </StackLayout>
+                            </Frame>
+
+                            <Label Text="Password"  HorizontalOptions="Center" FontAttributes="Bold"/>
+                            <Frame BackgroundColor="Transparent" BorderColor="Black" Margin="0,15,0,0" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="20">
+                                <StackLayout Orientation="Horizontal">
+                                    
+                                    <Entry Placeholder="Password" Keyboard="Chat" IsPassword="False" TextColor="DarkCyan" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"  x:Name="txtPassword"/>
+                                </StackLayout>
+                            </Frame>
+                            <Label Text="Address"  HorizontalOptions="Center" FontAttributes="Bold"/>
+                            <Frame BackgroundColor="Transparent" BorderColor="Black" Margin="0,15,0,0" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="20">
+                                <StackLayout Orientation="Horizontal">
+                                    
+                                    <Entry Placeholder="Address" IsTextPredictionEnabled="True" Keyboard="Default" TextColor="DarkCyan" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"  x:Name="txtAddress"/>
+                                </StackLayout>
+                            </Frame>
+
+                            <Label Text="Contact"  HorizontalOptions="Center" FontAttributes="Bold"/>
+                            <Frame BackgroundColor="Transparent" BorderColor="Black" Margin="0,15,0,0" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="20">
+                                <StackLayout Orientation="Horizontal">
+                                   
+                                    <Entry Placeholder="Contact" IsTextPredictionEnabled="True" Keyboard="Numeric" TextColor="DarkCyan" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"  x:Name="txtContact"/>
+                                </StackLayout>
+                            </Frame>
+                            <Label/>
+                            <Button Text="Save Changes" BackgroundColor="DarkCyan" TextColor="White" CornerRadius="30"  Clicked="Button_Clicked" />
+                          
+
+
+                        </StackLayout>
+
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Readrix.Settingreader.Cancelorder" Title="Cancelled Orders" BackgroundImageSource="bb1">
+    <ContentPage.Content>
+        
+        <ScrollView>
+            <StackLayout Spacing="10" Padding="10">
+                <StackLayout Padding="0" Margin="0" HorizontalOptions="FillAndExpand" >
+                    <Frame HeightRequest="90" BackgroundColor="DarkCyan" Padding="0" Margin="0" CornerRadius="10">
+                        <Image Source="cancelled.png" Aspect="AspectFill" Margin="0"/>
+                    </Frame>
+                </StackLayout>
+                <Label x:Name="lblname" Margin="10,20,10,20" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" FontSize="Medium" IsVisible="false" TextColor="Black"/>
+                <ListView x:Name="ListData"
+              HasUnevenRows="True" ItemSelected="ListData_ItemSelected"
+              SeparatorVisibility="None">
+
+                    <ListView.Header>
+                        <Frame BackgroundColor="Transparent">
+                            <Grid Margin="0,0,0,0">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="70*" />
+                                    <ColumnDefinition Width="70*" />
+                                    <ColumnDefinition Width="50*" />
+                                    <ColumnDefinition Width="70*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="27" />
+                                </Grid.RowDefinitions>
+                                <Label Text="Name"
+                           HorizontalOptions="Center"
+                            FontSize="Medium" TextColor="Black"/>
+                                <Label Grid.Column="1"
+                       Text="Status"
+                           HorizontalOptions="Center"
+                           FontSize="Medium" TextColor="Black"/>
+
+                                <Label Grid.Column="2"
+                             Text="Date"
+                           HorizontalOptions="StartAndExpand"
+                           FontSize="Medium" TextColor="Black"/>
+                                <Label Grid.Column="3"
+                            Text=" Mode"
+                           HorizontalOptions="StartAndExpand"
+                           FontSize="Medium" TextColor="Black"/>
+
+                            </Grid>
+                        </Frame>
+                    </ListView.Header>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Margin="20,0,0,20">
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="60"/>
+
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="70*" />
+                                        <ColumnDefinition Width="70*" />
+                                        <ColumnDefinition Width="40*" />
+                                        <ColumnDefinition Width="80*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Text="{Binding Reader_Name}"
+                                      FontSize="14" TextColor="Black" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="0"/>
+                                    <Label Grid.Column="1"
+                               Text="{Binding ORDER_STATUS}"
+                               FontSize="14" TextColor="Black" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="0"/>
+
+                                    <Label Text="{Binding ORDER_DATE}"
+                               Grid.Column="2"
+                               FontSize="14" TextColor="Black" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="0"/>
+
+                                    <Label Text="{Binding PAYMENT_TYPE}"
+                                Grid.Column="3"
+                               FontSize="14" TextColor="Black" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="0"/>
+
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
