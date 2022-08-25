@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "330784603027",
+    "project_id": "readrixfiles",
+    "storage_bucket": "readrixfiles.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:330784603027:android:c6c0f743dded3934254666",
+        "android_client_info": {
+          "package_name": "com.companyname.readrix"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "330784603027-pkg83topb770gbdm8sqmge6fbsd8em0d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.companyname.readrix",
+            "certificate_hash": "8fdb74dbdb759cbadbd1d3db9d09951c70f2d06e"
+          }
+        },
+        {
+          "client_id": "330784603027-ij9dtbr7aeqbcj6vajr7schne9sh4sip.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAu1wPvXdNy9Rgn1rED4gtShqOeJxakT6o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "330784603027-ij9dtbr7aeqbcj6vajr7schne9sh4sip.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

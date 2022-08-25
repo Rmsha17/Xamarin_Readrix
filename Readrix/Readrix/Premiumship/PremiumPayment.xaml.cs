@@ -26,7 +26,7 @@ namespace Readrix.Premiumship
             readerpremium = premium;
             WebPageViewer.Source = uri;
         }
-        private async void WebPageViewer_Navigating(object sender, WebNavigatingEventArgs e)
+        private void WebPageViewer_Navigating(object sender, WebNavigatingEventArgs e)
         {
             if (e.Url.Contains("https://readrixsuccesspagesite.on.drv.tw/Payment/success.html?"))
             {

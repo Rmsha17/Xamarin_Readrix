@@ -6,6 +6,9 @@ using Android.Runtime;
 using Android.OS;
 using Acr.UserDialogs;
 using Lottie.Forms.Platforms.Android;
+using Firebase;
+using System.Collections.Generic;
+using Plugin.FirebasePushNotification;
 
 namespace Readrix.Droid
 {
@@ -19,10 +22,11 @@ namespace Readrix.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             UserDialogs.Init(this);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-
+            FirebasePushNotificationManager.ProcessIntent(this, Intent);
             // You may use ServicePointManager here
             //System.Net.ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
-           LoadApplication(new App());
+
+            LoadApplication(new App());
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {

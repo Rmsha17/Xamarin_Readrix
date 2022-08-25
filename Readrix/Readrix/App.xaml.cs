@@ -12,6 +12,7 @@ using Readrix.Shop;
 using Readrix.Settingreader;
 using Readrix.Premiumship;
 using System.Collections.Generic;
+using Plugin.FirebasePushNotification;
 
 namespace Readrix
 {
@@ -28,8 +29,32 @@ namespace Readrix
         {
             InitializeComponent();
             MainPage = new Splashscreen();
-        }
 
+            CrossFirebasePushNotification.Current.OnTokenRefresh += (s, p) =>
+            {
+                System.Diagnostics.Debug.WriteLine($"TOKEN : {p.Token}");
+            };
+            CrossFirebasePushNotification.Current.OnNotificationReceived += (s, p) =>
+            {
+
+                System.Diagnostics.Debug.WriteLine("Received");
+                foreach (var data in p.Data)
+                {
+                    System.Diagnostics.Debug.WriteLine($"{data.Key} : {data.Value}");
+                }
+
+            }; 
+            //CrossFirebasePushNotification.Current.OnNotificationOpened += (s, p) =>
+            //{
+            //    System.Diagnostics.Debug.WriteLine("Opened");
+            //    foreach (var data in p.Data)
+            //    {
+            //        System.Diagnostics.Debug.WriteLine($"{data.Key} : {data.Value}");
+            //    }
+
+            //};
+        }
+      
         protected override void OnStart()
         {
         }
