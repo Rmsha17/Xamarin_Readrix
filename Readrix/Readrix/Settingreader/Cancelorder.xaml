@@ -21,9 +21,9 @@
                             <Grid Margin="0,0,0,0">
 
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="70*" />
-                                    <ColumnDefinition Width="70*" />
-                                    <ColumnDefinition Width="50*" />
+                                    <ColumnDefinition Width="72*" />
+                                    <ColumnDefinition Width="76*" />
+                                    <ColumnDefinition Width="55*" />
                                     <ColumnDefinition Width="70*" />
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
@@ -33,7 +33,7 @@
                            HorizontalOptions="Center"
                             FontSize="Medium" TextColor="Black"/>
                                 <Label Grid.Column="1"
-                       Text="Status"
+                       Text="Sts."
                            HorizontalOptions="Center"
                            FontSize="Medium" TextColor="Black"/>
 
