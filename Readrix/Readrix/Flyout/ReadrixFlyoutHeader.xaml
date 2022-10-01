@@ -2,7 +2,7 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Readrix.ReaderLoginSystem.ReadrixFlyoutHeader"
-              HeightRequest="190" NavigationPage.IconColor="HotPink" >
+              HeightRequest="230" NavigationPage.IconColor="HotPink" >
     <ContentView.Content>
         
             <Grid HorizontalOptions="FillAndExpand"
@@ -16,7 +16,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="60"/>
                     <RowDefinition Height="110"/>
                     <RowDefinition Height="Auto"/>
 

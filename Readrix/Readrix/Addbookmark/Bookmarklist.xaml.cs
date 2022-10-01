@@ -70,7 +70,10 @@ namespace Readrix.Addbookmark
                 if (q)
                 {
                     UserDialogs.Instance.ShowLoading("Loading Please Wait...");
-                    var client = new HttpClient();
+                    var httpClientHandler = new HttpClientHandler();
+                    httpClientHandler.ServerCertificateCustomValidationCallback =
+                        (message, certificate, chain, sslPolicyErrors) => true;
+                    var client = new HttpClient(httpClientHandler);
                     var uri = App.Base_url + "api/Bookmark/remove?id=" + selected.Bookmarkid;
                     var result = await client.DeleteAsync(uri);
                     LoadData();

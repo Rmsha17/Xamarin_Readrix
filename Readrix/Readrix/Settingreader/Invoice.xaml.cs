@@ -55,9 +55,10 @@ namespace Readrix.Settingreader
                 Artifact artifact = JsonConvert.DeserializeObject<Artifact>(result3);
 
                 item.ARTIFACT_NAME = artifact.ARTIFACT_NAME;
+                item.ARTIFACT_IMAGE = artifact.ARTIFACT_PICTURE;
                 item.QUANTITY = Math.Abs(item.QUANTITY);
-                item.ARTIFACT_IMAGE = artifact.ARTIFACT_PICTURE.Replace("~/", "");
-                item.ARTIFACT_IMAGE = App.Base_urlPic + item.ARTIFACT_IMAGE;
+               
+               
                 item.Total = Math.Abs(item.QUANTITY) * item.ARTIFACT_SALEPRICE;
                 total += (decimal)item.Total;
                 

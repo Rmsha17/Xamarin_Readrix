@@ -4,7 +4,7 @@
              x:Class="Readrix.Premiumship.PremiumPayment" Title="Paypal" BackgroundImageSource="bb2">
     <ContentPage.Content>
         <StackLayout>
-            <WebView Navigated="WebPageViewer_Navigated" Navigating="WebPageViewer_Navigating" HorizontalOptions="FillAndExpand" HeightRequest="450" x:Name="WebPageViewer"/>
+            <WebView Navigated="WebPageViewer_Navigated" Navigating="WebPageViewer_Navigating" HorizontalOptions="FillAndExpand" HeightRequest="600" x:Name="WebPageViewer"/>
             <Button IsVisible="false" Text="Click to Proceed" x:Name="btnproceeed"  Clicked="btnproceeed_Clicked" Margin="10,0,10,0" CornerRadius="5"/>
         </StackLayout>
     </ContentPage.Content>

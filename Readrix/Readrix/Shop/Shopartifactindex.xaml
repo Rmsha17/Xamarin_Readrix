@@ -10,7 +10,7 @@
         <StackLayout Margin="10,15,10,30">
                 <Label x:Name="lblname" TextColor="Black" FontSize="Medium" HorizontalOptions="StartAndExpand" FontAttributes="Bold"/> 
                 <StackLayout Padding="0" Margin="0" HorizontalOptions="FillAndExpand">
-                    <Frame HeightRequest="280" BackgroundColor="DarkCyan" CornerRadius="10" Padding="5" Margin="0">
+                    <Frame HeightRequest="300" BackgroundColor="DarkCyan" CornerRadius="10" Padding="5" Margin="0,0,30,0">
                         <Image Source="S1.jpg" x:Name="imageartifact" Aspect="Fill" Margin="0"/>
                     </Frame>
                 </StackLayout>
@@ -22,8 +22,8 @@
                 </StackLayout>
 
                 <Label Text="Description" FontSize="Medium" TextColor="Black"></Label>
-                <Label x:Name="lbldescription" HorizontalOptions="StartAndExpand" ></Label>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
+                <Label x:Name="lbldescription" HorizontalOptions="StartAndExpand" TextColor="Black" Margin="0,0,30,0"></Label>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" >
                     <Button Margin="2,0,2,0"  WidthRequest="200" FontAttributes="Bold" BorderWidth="3" BorderColor="White" Text="Add to Cart" Clicked="Button_Clicked" CornerRadius="15" />
                     </StackLayout>
                 <Label/>

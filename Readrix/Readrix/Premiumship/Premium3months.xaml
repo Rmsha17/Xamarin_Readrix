@@ -2,7 +2,7 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Readrix.Premiumship.Premium3months" BackgroundColor="White">
-    <ContentView.Content>
+    <ContentView.Content >
         <ScrollView  AbsoluteLayout.LayoutFlags="All" VerticalScrollBarVisibility="Never">
 
             <Grid Padding="13">
@@ -13,8 +13,8 @@
                     <RowDefinition Height="30" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50"/>
-                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50*"/>
+                    <ColumnDefinition Width="50*"/>
                 </Grid.ColumnDefinitions>
                 <StackLayout Margin="10,0,65,0" Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
                     <Label Text="Product" TextColor="Black" FontAttributes="Bold"  FontSize="Medium"/>

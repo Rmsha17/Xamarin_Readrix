@@ -8,7 +8,7 @@
             <StackLayout>
 
                 <StackLayout >
-                    <Frame HeightRequest="300" WidthRequest="70"  CornerRadius="10" Margin="40,20,40,20">
+                    <Frame HeightRequest="400" WidthRequest="70"  CornerRadius="10" Margin="40,20,40,20">
                         <Image x:Name="artifactimage" Aspect="AspectFill" Margin="0" />
                     </Frame>
                 </StackLayout>
@@ -17,13 +17,13 @@
                     <Button Text="bookmark" HeightRequest="50" WidthRequest="200"
                             FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                             VerticalOptions="Center" CornerRadius="40" Margin="40,0,40,20"
-                            x:Name="btnbookmark" BorderWidth="3" BorderColor="White" Clicked="Button_Clicked"/>
+                            x:Name="btnbookmark" BorderWidth="3" BorderColor="Black" Clicked="Button_Clicked"/>
 
                 </StackLayout>
                 <StackLayout>
                     <Label  x:Name="lblname" Margin="20,0,20,0"
                  FontSize="Medium" FontAttributes="Bold" TextColor="Black" />
-                    <!--<Label Text="Artifact Details" Margin="20,0,20,0" FontAttributes="Bold" TextColor="Black"></Label>-->
+                    <Label Text="Artifact Details" Margin="20,0,20,0" FontAttributes="Bold" TextColor="Black"></Label>
 
                     <Label Margin="20,0,20,0"  x:Name="lblid" IsVisible="false" TextColor="Black"></Label>
                     <Label Margin="20,0,20,0"  x:Name="lbldate" TextColor="Black"></Label>
@@ -52,7 +52,7 @@
                         <ListView.ItemTemplate TextColor="Black">
                             <DataTemplate>
                                 <ImageCell Text="{Binding READER_NAME}"  Detail="{Binding FEEDBACK_DESCRIPTION}"  ImageSource="{Binding READER_IMAGE}"></ImageCell>
-                               
+
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>

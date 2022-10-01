@@ -20,11 +20,6 @@ namespace Readrix.Settingreader
         public Orderhistory()
         {
             InitializeComponent();
-            
-        }
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
             LoadData();
         }
         private async void LoadData()

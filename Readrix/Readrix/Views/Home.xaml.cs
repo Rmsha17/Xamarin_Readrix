@@ -21,7 +21,6 @@ namespace Readrix.Views
         {
             InitializeComponent();
             LoadData();
-
         }
         //protected override void OnAppearing()
         //{

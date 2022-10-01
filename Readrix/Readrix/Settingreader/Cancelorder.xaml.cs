@@ -20,12 +20,13 @@ namespace Readrix.Settingreader
         public Cancelorder()
         {
             InitializeComponent();
-        }
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
             LoadData();
         }
+        //protected override void OnAppearing()
+        //{
+        //    base.OnAppearing();
+            
+        //}
         private async void LoadData()
         {
             UserDialogs.Instance.ShowLoading("Loading Please Wait...");

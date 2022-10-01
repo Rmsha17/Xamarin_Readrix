@@ -7,7 +7,7 @@
         <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
             <Image Source="bb2.jpeg" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Aspect="AspectFill"/>
 
-            <ScrollView  VerticalScrollBarVisibility="Never">
+            <ScrollView>
 
             
                 <CollectionView x:Name="ListData" SelectionMode="Single"  SelectionChanged="ListData_SelectionChanged" ItemsLayout="VerticalGrid, 2">
@@ -32,8 +32,8 @@
                                     <RowDefinition Height="0" />
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="10"/>
-                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition Width="100"/>
                                 </Grid.ColumnDefinitions>
                                 
                                 <Label Grid.Row="0"

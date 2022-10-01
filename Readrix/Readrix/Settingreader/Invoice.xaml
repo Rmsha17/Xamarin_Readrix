@@ -15,7 +15,7 @@
                     <Label TextColor="Black" FontSize="Medium"  x:Name="lbltotal" FontAttributes="Bold"/>
                     <Label  FontSize="Medium"  Text="Rs" FontAttributes="Bold"/>
 
-                </StackLayout> 
+                </StackLayout>
                 <StackLayout Orientation="Vertical" Margin="10,0,0,0">
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Order ID:" TextColor="Black" FontSize="16"  FontAttributes="Bold"/>
@@ -26,12 +26,12 @@
                         <Label  TextColor="Black" FontSize="16"   x:Name="lbldate" FontAttributes="Bold"/>
                     </StackLayout>
                 </StackLayout>
-              <Label x:Name="lblname" Margin="10,20,10,20" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" FontSize="Medium" IsVisible="false" TextColor="Black"/>
+                <Label x:Name="lblname" Margin="10,20,10,20" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" FontSize="Medium" IsVisible="false" TextColor="Black"/>
                 <ListView x:Name="ListData" HeightRequest="220"
               HasUnevenRows="True" 
               SeparatorVisibility="None">
 
-                   
+
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -46,7 +46,7 @@
                                         <ColumnDefinition Width="6*" />
                                         <ColumnDefinition Width="5*" />
                                     </Grid.ColumnDefinitions>
-                                    <Label Text="Artifact Image:" Grid.Row="0" TextColor="Black" Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="0"/>
+                                 
                                     <Frame Grid.ColumnSpan="2"  Grid.RowSpan="7" CornerRadius="20" HeightRequest="70" WidthRequest="20" Margin="0,-40,100,0" Padding="0"
                                        Grid.Row="1"  Grid.Column="0" 
                                       >
@@ -57,33 +57,33 @@
                                 />
                                     </Frame>
                                     <Label 
-                               Text="Artifact Name:" Grid.Row="0"  Grid.Column="1" Padding="20,0,0,-80" Grid.ColumnSpan="2"
+                               Text="Artifact Name:" Grid.Row="0"  Grid.Column="1" Padding="60,0,0,-80" Grid.ColumnSpan="2"
                                FontSize="14" TextColor="Black" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="0"/>
 
-                                    <Label Text="{Binding ARTIFACT_NAME}"  Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="1"  Padding="20,-5,0,0"
-                                      FontSize="14"  VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="0"/>
+                                    <Label Text="{Binding ARTIFACT_NAME}"  Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="1"  Padding="60,-5,0,0"
+                                      FontSize="14"  VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="0" TextColor="Black"/>
                                     <Label 
-                               Text="Quantity:" Grid.Row="2"  Grid.Column="1" Padding="20,0,0,-20"
+                               Text="Quantity:" Grid.Row="2"  Grid.Column="1" Padding="60,0,0,-20"
                                FontSize="14" TextColor="Black" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="0"/>
- 
+
                                     <Label 
-                               Text="{Binding QUANTITY}" Grid.Row="3"  Grid.Column="1" Padding="20,0,0,0"
+                               Text="{Binding QUANTITY}" Grid.Row="3"  Grid.Column="1" Padding="60,0,0,0" TextColor="Black"
                                FontSize="14"  VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="0"/>
 
                                     <Label 
-                               Text="SalePrice:" Grid.Row="4"  Grid.Column="1" Padding="20,0,0,-10"
+                               Text="SalePrice:" Grid.Row="4"  Grid.Column="1" Padding="60,0,0,-10"
                                FontSize="14" TextColor="Black" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="0"/>
- 
+
                                     <Label 
-                               Text="{Binding ARTIFACT_SALEPRICE}" Grid.Row="5"  Grid.Column="1" Padding="20,0,0,0"
+                               Text="{Binding ARTIFACT_SALEPRICE}" Grid.Row="5"  Grid.Column="1" Padding="60,0,0,0" TextColor="Black"
                                FontSize="14"  VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="0"/>
 
                                     <Label 
-                               Text="Product total:" Grid.Row="6" Grid.ColumnSpan="2"  Grid.Column="1" Padding="20,0,0,-20"
+                               Text="Product total:" Grid.Row="6" Grid.ColumnSpan="2"  Grid.Column="1" Padding="60,0,0,-20"
                                FontSize="14" TextColor="Black" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="0"/>
 
-                                    <Label Text="{Binding Total}"
-                               Grid.Row="7"  Grid.RowSpan="2" Grid.Column="1" Padding="20,-25,0,0"
+                                    <Label Text="{Binding Total}" TextColor="Black"
+                               Grid.Row="7"  Grid.RowSpan="2" Grid.Column="1" Padding="60,-25,0,0"
                                FontSize="14"  VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="0"/>
 
                                 </Grid>

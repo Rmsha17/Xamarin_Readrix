@@ -7,17 +7,17 @@
             <StackLayout >
                 <Grid>
                     <StackLayout Padding="0" Margin="0" HorizontalOptions="FillAndExpand">
-                        <Frame HeightRequest="180" BackgroundColor="DarkCyan" Padding="0" Margin="0">
+                        <Frame HeightRequest="230" BackgroundColor="DarkCyan" Padding="0" Margin="0">
                             <Image Source="cp1.jpg" Aspect="AspectFill" Margin="0"/>
                         </Frame>
                     </StackLayout>
                     <StackLayout Padding="0" Margin="10,110,10,0" >
                         <Image Source="Gradient.png" Aspect="Fill" />
                     </StackLayout>
-                    <StackLayout Padding="0" Margin="15,120,20,15">
-                        <Label Text="SIGN UP" TextColor="Black" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                    <StackLayout Padding="0" Margin="15,125,20,15">
+                        <Label Text="SIGN UP" TextColor="Black" FontSize="Medium" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
                     </StackLayout>
-                    <StackLayout Padding="0" Margin="15,160,15,0">
+                    <StackLayout Padding="0" Margin="30,175,30,0">
                         <Label x:Name="filename" FontSize="Large"  HorizontalOptions="Center" FontAttributes="Bold" IsVisible="False" ></Label>
                         <Frame BackgroundColor="SkyBlue"  CornerRadius="20" Padding="0" Margin="5" HeightRequest="150" WidthRequest="80" BorderColor="Black">
                             <Image Source="image4.jpeg" x:Name="imgfile"  Aspect="AspectFill" ></Image>
@@ -25,8 +25,8 @@
                         <Button Text="Pick image" Clicked="Button_Clicked_1" BackgroundColor="HotPink" CornerRadius="20" Margin="10,-5,10,0"></Button>
 
                     </StackLayout>
-                    <StackLayout Padding="0" Margin="15,380,15,30" HeightRequest="300" >
-                        <StackLayout Padding="0" Margin="15,0,15,0"  >
+                    <StackLayout Padding="0" Margin="15,395,15,30" HeightRequest="300" >
+                        <StackLayout Padding="0" Margin="30,0,30,0"  >
 
                             <Frame BackgroundColor="Transparent" BorderColor="Black"  Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
                                 <StackLayout Orientation="Horizontal">
@@ -83,15 +83,13 @@
                             </Frame>
 
 
-                            <StackLayout  Orientation="Horizontal" Margin="0,0,0,15">
-                                <CheckBox IsChecked="False" Color="DarkCyan" />
-                                <Label Text="Remember me" FontSize="Micro" TextColor="Black" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
-                                <Label Text="Forgot Password" Padding="20,0,0,0" TextColor="DarkCyan" FontAttributes="Bold" HorizontalOptions="End" FontSize="Micro" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
-                            </StackLayout>
-                            <Button Text="SIGN UP" BackgroundColor="DarkCyan" TextColor="White" CornerRadius="30" Margin="0,-18,0,0"  Clicked="RegisterAccount" />
+                           
+                            <Button Text="SIGN UP" BackgroundColor="DarkCyan" TextColor="White"
+                                    CornerRadius="30" Margin="0,15,0,0" FontSize="Medium" Clicked="RegisterAccount"
+                                    BorderColor="Black" BorderWidth="2" />
                             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                                <Label Text="Already Connected ?" TextColor="Black" FontSize="Small"/>
-                                <Label Text="Sign In" TextColor="DarkCyan" FontSize="Small" >
+                                <Label Text="Already Connected ?" TextColor="Black" FontSize="18"/>
+                                <Label Text="Sign In" TextColor="DarkCyan" FontSize="18" >
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                                     </Label.GestureRecognizers>

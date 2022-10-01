@@ -19,7 +19,10 @@
                     </controls:SegmentedControl.Children>
                 </controls:SegmentedControl>
         <StackLayout x:Name="SegContent"  Margin="5,0,5,0" />
-            
+        <StackLayout  Margin="5,0,5,0">
+            <Label Text="Become a Premier member and get extra benefits, such as special offers, and others!" 
+                  TextColor="Black"  ></Label>
+        </StackLayout>
         
 
     </StackLayout>
