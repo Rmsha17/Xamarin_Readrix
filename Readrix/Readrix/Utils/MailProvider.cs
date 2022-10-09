@@ -14,7 +14,7 @@ namespace Readrix.Utils
             {
                 MailMessage message = new MailMessage();
                 SmtpClient smtp = new SmtpClient();
-                message.From = new MailAddress("readrix28@gmail.com");
+                message.From = new MailAddress("readrix28@gmail.com", "Readrix", System.Text.Encoding.UTF8);
                 message.To.Add(new MailAddress(receiver));
                 message.Subject = subject;
                 message.IsBodyHtml = true; //to make message body as html  
