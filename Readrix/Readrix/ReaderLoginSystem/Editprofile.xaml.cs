@@ -1,4 +1,5 @@
 ﻿using Acr.UserDialogs;
+using Google.Protobuf.WellKnownTypes;
 using Newtonsoft.Json;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
@@ -11,7 +12,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-
+using Readrix.Utils;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -20,6 +21,7 @@ namespace Readrix.ReaderLoginSystem
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Editprofile : ContentPage
     {
+        ApiCRUD api = new ApiCRUD();
         public static string PicPath = App.LoggedInReader.READER_IMAGE;
         public static bool isnewpictureselected = false;
         private MediaFile _mediaFile;
@@ -51,19 +53,13 @@ namespace Readrix.ReaderLoginSystem
             try
             {
                 UserDialogs.Instance.ShowLoading("Loading Please Wait...");
-                var httpClientHandler = new HttpClientHandler();
-                httpClientHandler.ServerCertificateCustomValidationCallback =
-                    (message, certificate, chain, sslPolicyErrors) => true;
-                var client = new HttpClient(httpClientHandler);
+              
                 if (isnewpictureselected == true)
                 {
                     var content = new MultipartFormDataContent();
                     content.Add(new StreamContent(_mediaFile.GetStream()), "\"file\"", $"\"{_mediaFile.Path}\"");
-                    var uri1 = App.Base_urlPic + "api/readers/postimage";
 
-
-                    var httpResponse = await client.PostAsync(uri1, content);
-                    string ResponseMessage = await httpResponse.Content.ReadAsStringAsync();
+                    string ResponseMessage = await api.CallApiPostimageAsync("api/readers/postimage", content);
                     image = ResponseMessage.Substring(1, ResponseMessage.Length - 2);
 
                 }
@@ -78,25 +74,19 @@ namespace Readrix.ReaderLoginSystem
                     READER_ADDRESS = txtAddress.Text,
                     READER_IMAGE = image,
                     IS_ACCOUNT_ACTIVATE = true
-
                 };
-               
 
-                var uri = App.Base_url + "api/Readers/" + reader.READER_ID;
-                var json = JsonConvert.SerializeObject(reader);
-                HttpContent httpContent = new StringContent(json);
-                httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                HttpResponseMessage result = await client.PutAsync(uri, httpContent);
+                var modifiedlist = await api.CallApiPutAsync("api/Readers/", reader.READER_ID, reader);
 
-              
-                if (result.IsSuccessStatusCode)
+                LoadData();
+                if (modifiedlist == true)
                 {
                     UserDialogs.Instance.HideLoading();
                     await DisplayAlert("Success", "Successfully Update Profile", "OK");
-                   //reader.READER_IMAGE =reader.READER_IMAGE.Replace("~/", App.Base_urlPic);
+
                     App.LoggedInReader = reader;
                     LoadData();
-                    // await Navigation.PopAsync();
+
                     App.Current.MainPage = new ReadrixFlyout();
                 }
                 else
@@ -104,6 +94,8 @@ namespace Readrix.ReaderLoginSystem
                     UserDialogs.Instance.HideLoading();
                     await DisplayAlert("Error", "Somthing went wrong!!", "OK");
                 }
+
+           
 
             }
             catch (Exception ex)

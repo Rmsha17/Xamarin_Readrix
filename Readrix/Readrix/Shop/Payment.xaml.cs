@@ -1,4 +1,5 @@
 ﻿using Acr.UserDialogs;
+using Google.Protobuf.WellKnownTypes;
 using Newtonsoft.Json;
 using Readrix.Models;
 using System;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-
+using Readrix.Utils;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,6 +17,7 @@ namespace Readrix.Shop
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Payment : ContentPage
     {
+        ApiCRUD api = new ApiCRUD();
         int dollerrate = (int)Conversionhelper.GetCurrentDollorprice();
         public static bool PaymentStatus = false;
         public Payment()
@@ -58,35 +60,22 @@ namespace Readrix.Shop
                     };
 
 
-                    var uri = App.Base_url + "/api/order/postorder";
-
-                    var httpClientHandler = new HttpClientHandler();
-                    httpClientHandler.ServerCertificateCustomValidationCallback =
-                        (message, certificate, chain, sslPolicyErrors) => true;
-                    var client = new HttpClient(httpClientHandler);
-
-                    string JsonData = JsonConvert.SerializeObject(order);
-                    StringContent StringData = new StringContent(JsonData, Encoding.UTF8, "application/json");
-                    HttpResponseMessage responseMessage = await client.PostAsync(uri, StringData);
-                    string responseData = await responseMessage.Content.ReadAsStringAsync();
-                    var response = JsonConvert.DeserializeObject<Order>(responseData);
+                    var orderadd = await api.CallApiPostedAsync<Order>("api/order/postorder", order);
 
 
                     foreach (var item in App.Cart)
                     {
-                        item.ORDER_FID = response.ORDER_ID;
+                        item.ORDER_FID = orderadd.ORDER_ID;
                         item.QUANTITY = item.QUANTITY * -1;
 
-                        var uri1 = App.Base_url + "api/orderdetail/postorderdetail";
-                        string JsonData1 = JsonConvert.SerializeObject(item);
-                        StringContent StringData1 = new StringContent(JsonData1, Encoding.UTF8, "application/json");
-                        var responseMessage1 = await client.PostAsync(uri1, StringData1);
-                        if (responseMessage1.IsSuccessStatusCode)
-                        {
+                        var orderdetailsadd = await api.CallApiPostAsync("api/orderdetail/postorderdetail", item);
 
+                        if (orderdetailsadd == true)
+                        {
                         }
 
                     }
+                    MailProvider.SenttoMail(App.LoggedInReader.READER_EMAIL, "Order Confirmation", "Dear " + App.LoggedInReader.READER_NAME + "!!Your order has been successfull purchased and will be delivered as per terms.<br/> Regards Readrix Team");
                     UserDialogs.Instance.HideLoading();
                     await Navigation.PushAsync(new Success());
 

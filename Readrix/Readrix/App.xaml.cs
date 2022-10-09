@@ -18,11 +18,13 @@ namespace Readrix
 {
     public partial class App : Application
     {
-        public static string Base_url = "https://readrixapi.blackpanthermart.com/";
         public static string Base_urlPic = "https://readrix.blackpanthermart.com/";
+        public static string Base_url = "https://readrixapi.blackpanthermart.com/";
         public static string EpisodeViewer = "https://drive.google.com/viewerng/viewer?embedded=true&url=https://readrix.blackpanthermart.com";
         public static List<Order_details> Cart = new List<Order_details>();
         public static Reader LoggedInReader = null;
+        public static Reader passwardreset = null;
+        public static int code = 0;
      
         public static decimal? Total = 0;
         public App()
@@ -44,15 +46,6 @@ namespace Readrix
                 }
 
             }; 
-            //CrossFirebasePushNotification.Current.OnNotificationOpened += (s, p) =>
-            //{
-            //    System.Diagnostics.Debug.WriteLine("Opened");
-            //    foreach (var data in p.Data)
-            //    {
-            //        System.Diagnostics.Debug.WriteLine($"{data.Key} : {data.Value}");
-            //    }
-
-            //};
         }
       
         protected override void OnStart()

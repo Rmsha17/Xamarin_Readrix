@@ -17,7 +17,7 @@ namespace Readrix.Shop
         {
             InitializeComponent();
             App.Cart.Clear();
-            App.LoggedInReader.READER_IMAGE = App.LoggedInReader.READER_IMAGE.Replace(App.Base_urlPic, "~/");
+           // App.LoggedInReader.READER_IMAGE = App.LoggedInReader.READER_IMAGE.Replace(App.Base_urlPic, "~/");
 
         }
 

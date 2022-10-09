@@ -35,6 +35,6 @@ namespace Readrix.Models
 
         public string SubCategory_Name {get; set;}
 
-
+        public int? Available_Quantity { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Acr.UserDialogs;
+using Google.Protobuf.WellKnownTypes;
 using Newtonsoft.Json;
 using Readrix.Models;
 using Readrix.Schedule;
@@ -11,12 +12,14 @@ using System.Threading.Tasks;
 using Ubiety.Dns.Core;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Readrix.Utils;
 
 namespace Readrix.Genre
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ArtifactIndex : ContentPage
     {
+        ApiCRUD api = new ApiCRUD();
         public static int cat1;
         public static int idart;
         public ArtifactIndex(Artifact artifact)
@@ -43,29 +46,12 @@ namespace Readrix.Genre
         {
             UserDialogs.Instance.ShowLoading("Loading Please Wait...");
 
-            var httpClientHandler = new HttpClientHandler();
-            httpClientHandler.ServerCertificateCustomValidationCallback =
-                (message, certificate, chain, sslPolicyErrors) => true;
-            var client = new HttpClient(httpClientHandler);
-            var uri = App.Base_url + "api/Episode/getepisodesbyid/?id=" + cat1;
-            var result = await client.GetStringAsync(uri);
-            List<Episodes> list = JsonConvert.DeserializeObject<List<Episodes>>(result);
-            ListData.ItemsSource = list;
+            var epilist = await api.CallApiGetAsync<List<Episodes>>("api/Episode/getepisodesbyid/?id=" + cat1);
+            ListData.ItemsSource = epilist;
 
-            var uri1 = App.Base_url + "api/Feedback/getartfeedbacks/?id=" + idart;
-            var result1 = await client.GetStringAsync(uri1);
-            List<Feedback> list1 = JsonConvert.DeserializeObject<List<Feedback>>(result1);
-            
-            List<Feedback> modifiedlist = new List<Feedback>();
-            foreach(var item in list1){
-                var uri2 = App.Base_url + "api/Readers/" + item.READER_FID;
-                var result2 = await client.GetStringAsync(uri2);
-                Reader reader = JsonConvert.DeserializeObject<Reader>(result2);
-                item.READER_NAME = reader.READER_NAME;
-                item.READER_IMAGE = reader.READER_IMAGE;
-                modifiedlist.Add(item);
-            }
-            listfeedback.ItemsSource = modifiedlist;
+            var artcomments = await api.CallApiGetAsync<List<Feedback>>("api/Feedback/getartfeedbacks/?id=" + idart);
+            listfeedback.ItemsSource = artcomments;
+
             UserDialogs.Instance.HideLoading();
         }
 
@@ -75,21 +61,19 @@ namespace Readrix.Genre
             Bookmark bookmark = new Bookmark();
             bookmark.ARTIFACT_FID = idart;
             bookmark.READER_FID = App.LoggedInReader.READER_ID;
-            var uri = App.Base_url + "api/Bookmark/addbookmark";
 
-            var httpClientHandler = new HttpClientHandler();
-            httpClientHandler.ServerCertificateCustomValidationCallback =
-                (message, certificate, chain, sslPolicyErrors) => true;
-            var client = new HttpClient(httpClientHandler);
+            var bookmarkart = await api.CallApiPostAsync("api/Bookmark/addbookmark" , bookmark);
+            if(bookmarkart == true)
+            {
+                UserDialogs.Instance.HideLoading();
+                await DisplayAlert("Message", "Successfully Bookmarked!!", "ok");
 
-            string JsonData = JsonConvert.SerializeObject(bookmark);
-            StringContent StringData = new StringContent(JsonData, Encoding.UTF8, "application/json");
-
-            HttpResponseMessage responseMessage = await client.PostAsync(uri, StringData);
-            string responseData = await responseMessage.Content.ReadAsStringAsync();
-            Response response = JsonConvert.DeserializeObject<Response>(responseData);
-            UserDialogs.Instance.HideLoading();
-            await DisplayAlert("Message", "Successfully Bookmarked!!", "ok");
+            }
+            else
+            {
+                UserDialogs.Instance.HideLoading();
+                await DisplayAlert("Message", "Already Bookmarked!!", "ok");
+            }
 
         }
 
@@ -99,13 +83,9 @@ namespace Readrix.Genre
 
             UserDialogs.Instance.ShowLoading("Loading Please Wait...");
 
-            var httpClientHandler = new HttpClientHandler();
-            httpClientHandler.ServerCertificateCustomValidationCallback =
-                (message, certificate, chain, sslPolicyErrors) => true;
-            var client = new HttpClient(httpClientHandler);
-            var uri = App.Base_url + "api/ReaderPremium/getloggedreader?id=" + App.LoggedInReader.READER_ID;
-            var result = await client.GetStringAsync(uri);
-            ReaderPremiums list = JsonConvert.DeserializeObject<ReaderPremiums>(result);
+          
+
+            var list = await api.CallApiGetAsync<ReaderPremiums>("api/ReaderPremium/getloggedreader?id=" + App.LoggedInReader.READER_ID);
 
             if (list != null)
             {
@@ -118,15 +98,20 @@ namespace Readrix.Genre
                         VIEW_DATE = System.DateTime.Now,
                         EPISODE_FID = selected.EPISODE_ID
                     };
-                    var uri2 = App.Base_url + "api/View/postview";
-                   
-                    string JsonData = JsonConvert.SerializeObject(view);
-                    StringContent StringData = new StringContent(JsonData, Encoding.UTF8, "application/json");
-                    HttpResponseMessage responseMessage = await client.PostAsync(uri2, StringData);
-                    string responseData = await responseMessage.Content.ReadAsStringAsync();
-                    Response response = JsonConvert.DeserializeObject<Response>(responseData);
-                    await Navigation.PushAsync(new EpisodePDF(selected,lblname.Text));
-                    UserDialogs.Instance.HideLoading();
+                    
+                    var postview = await api.CallApiPostAsync("api/View/postview", view);
+                    if (postview == true)
+                    {
+                        UserDialogs.Instance.HideLoading();
+                        await Navigation.PushAsync(new EpisodePDF(selected, lblname.Text));
+                       
+                    }
+                    else
+                    {
+                        UserDialogs.Instance.HideLoading();
+                        await DisplayAlert("Message", "Somthing Went Wrong!!", "ok");
+                    }
+
                 }
                 else
                 {
@@ -172,25 +157,20 @@ namespace Readrix.Genre
                         ARTIFACT_FID = idart
                     };
 
-                    var uri = App.Base_url + "api/Feedback/postfeedback";
+                    var commentpost = await api.CallApiPostAsync("api/Feedback/postfeedback", feedback);
 
-                    var httpClientHandler = new HttpClientHandler();
-                    httpClientHandler.ServerCertificateCustomValidationCallback =
-                        (message, certificate, chain, sslPolicyErrors) => true;
-                    var client = new HttpClient(httpClientHandler);
-
-                    string JsonData = JsonConvert.SerializeObject(feedback);
-                    StringContent StringData = new StringContent(JsonData, Encoding.UTF8, "application/json");
-
-                    HttpResponseMessage responseMessage = await client.PostAsync(uri, StringData);
-                    string responseData = await responseMessage.Content.ReadAsStringAsync();
-                    Response response = JsonConvert.DeserializeObject<Response>(responseData);
-
-
+                    if(commentpost == true) { 
                     UserDialogs.Instance.HideLoading();
                     await DisplayAlert("Message", "Comment Posted!!", "ok");
                     txtmessage.Text = null;
                     LoadData(); 
+                    }
+                    else
+                    {
+                        UserDialogs.Instance.HideLoading();
+                        await DisplayAlert("Message", "Somthing Went Wrong!!", "ok");
+                    }
+
                 }
                 catch (Exception ex)
                 {

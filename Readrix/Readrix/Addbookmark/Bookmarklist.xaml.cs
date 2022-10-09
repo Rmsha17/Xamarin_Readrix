@@ -10,12 +10,15 @@ using Readrix.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Readrix.Genre;
+using Readrix.Utils;
+using Google.Protobuf.WellKnownTypes;
 
 namespace Readrix.Addbookmark
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Bookmarklist : ContentPage
     {
+        ApiCRUD api = new ApiCRUD();
         public Bookmarklist()
         {
             InitializeComponent();
@@ -29,30 +32,8 @@ namespace Readrix.Addbookmark
         {
 
             UserDialogs.Instance.ShowLoading("Loading Please Wait...");
-
-
-            var httpClientHandler = new HttpClientHandler();
-            httpClientHandler.ServerCertificateCustomValidationCallback =
-                (message, certificate, chain, sslPolicyErrors) => true;
-            var client = new HttpClient(httpClientHandler);
-            var uri = App.Base_url + "api/Bookmark/getllist?id=" + App.LoggedInReader.READER_ID;
-            var result = await client.GetStringAsync(uri);
-            List<Bookmark> list = JsonConvert.DeserializeObject<List<Bookmark>>(result);
-            List<Artifact> RefinedList = new List<Artifact>();
-            foreach(var item in list)
-            {
-                var uri2 = App.Base_url + "api/Artifacts/getartifact/?id=" + item.ARTIFACT_FID;
-                var result2 = await client.GetStringAsync(uri2);
-                Artifact list2 = JsonConvert.DeserializeObject<Artifact>(result2);
-               
-                list2.Bookmarkid = item.BOOKMARK_ID;
-                var uri3 = App.Base_url + "api/SubCategories/" + list2.SUB_CATEGORY_FID;
-                var result3 = await client.GetStringAsync(uri3);
-                SubCategory sub = JsonConvert.DeserializeObject<SubCategory>(result3);
-                list2.SubCategory_Name = sub.SUB_CATEGORY_NAME;
-                RefinedList.Add(list2);
-            }
-            collectionList.ItemsSource = RefinedList;
+            var Refinedlist = await api.CallApiGetAsync<List<Artifact>>("api/Bookmark/getllist?id=" + App.LoggedInReader.READER_ID);
+            collectionList.ItemsSource = Refinedlist;
             UserDialogs.Instance.HideLoading();
         }
 
@@ -70,14 +51,10 @@ namespace Readrix.Addbookmark
                 if (q)
                 {
                     UserDialogs.Instance.ShowLoading("Loading Please Wait...");
-                    var httpClientHandler = new HttpClientHandler();
-                    httpClientHandler.ServerCertificateCustomValidationCallback =
-                        (message, certificate, chain, sslPolicyErrors) => true;
-                    var client = new HttpClient(httpClientHandler);
-                    var uri = App.Base_url + "api/Bookmark/remove?id=" + selected.Bookmarkid;
-                    var result = await client.DeleteAsync(uri);
+
+                    var removebookmark = await api.CallApiDeleteAsync("api/Bookmark/remove?id="+ selected.Bookmarkid);
                     LoadData();
-                    if (result.IsSuccessStatusCode)
+                    if (removebookmark == true)
                     {
                         UserDialogs.Instance.HideLoading();
                         await DisplayAlert("Successfully", selected.ARTIFACT_NAME + " removed from bookmark", "OK");

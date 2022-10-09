@@ -9,12 +9,15 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
+using Google.Protobuf.WellKnownTypes;
+using Org.BouncyCastle.Asn1.X509;
+using Readrix.Utils;
 namespace Readrix.Premiumship
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PremiumPayment : ContentPage
     {
+        ApiCRUD api = new ApiCRUD();
         int dollerrate = (int)Conversionhelper.GetCurrentDollorprice();
         public static bool PaymentStatus = false;
         public static Premium readerpremium;
@@ -62,28 +65,18 @@ namespace Readrix.Premiumship
                     Premium.PREMIUM_FID = readerpremium.PREMIUM_ID;
                     Premium.PREMIUM_END_DATE = Premium.BUY_DATE.AddMonths(readerpremium.DURATION_IN_MONTHS);
                     Premium.READER_FID = App.LoggedInReader.READER_ID;
-                   
+                  
 
+                    var premadd = await api.CallApiPostAsync("api/ReaderPremiums", Premium);
 
-                    var uri = App.Base_url + "api/ReaderPremiums";
-
-                    var httpClientHandler = new HttpClientHandler();
-                    httpClientHandler.ServerCertificateCustomValidationCallback =
-                        (message, certificate, chain, sslPolicyErrors) => true;
-                    var client = new HttpClient(httpClientHandler);
-
-                    string JsonData = JsonConvert.SerializeObject(Premium);
-                    StringContent StringData = new StringContent(JsonData, Encoding.UTF8, "application/json");
-                    HttpResponseMessage responseMessage = await client.PostAsync(uri, StringData);
-                    //string responseData = await responseMessage.Content.ReadAsStringAsync();
-                    //var response = JsonConvert.DeserializeObject<Order>(responseData);
-                    if (responseMessage.IsSuccessStatusCode)
+                    if (premadd==true)
                     {
+                        
+                        MailProvider.SenttoMail(App.LoggedInReader.READER_EMAIL, "Prmiumship Package", "Dear " + App.LoggedInReader.READER_NAME + "!!Your package has been successfull purchased.<br/> Regards Readrix Team");
+                        UserDialogs.Instance.HideLoading();
+                        await Navigation.PushAsync(new SuccessPremium());
 
                     }
-
-                    UserDialogs.Instance.HideLoading();
-                    await Navigation.PushAsync(new SuccessPremium());
 
                 }
                 catch (Exception ex)

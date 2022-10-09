@@ -1,4 +1,5 @@
 ﻿using Acr.UserDialogs;
+using Google.Protobuf.WellKnownTypes;
 using Newtonsoft.Json;
 using Readrix.Genre;
 using Readrix.Models;
@@ -7,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using Readrix.Utils;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -18,6 +20,7 @@ namespace Readrix.Views
     public partial class Comicsgenres : ContentView
     {
         public static int cat1;
+        ApiCRUD api = new ApiCRUD();
         public Comicsgenres()
         {
             InitializeComponent();
@@ -29,19 +32,11 @@ namespace Readrix.Views
         {
             UserDialogs.Instance.ShowLoading("Loading Please Wait...");
 
-            var httpClientHandler = new HttpClientHandler();
-            httpClientHandler.ServerCertificateCustomValidationCallback =
-                (message, certificate, chain, sslPolicyErrors) => true;
-            var client = new HttpClient(httpClientHandler);
-            var uri = App.Base_url + "api/Category/getcategory";
-            var result = await client.GetStringAsync(uri);
-            List<Category> list = JsonConvert.DeserializeObject<List<Category>>(result);
-            cat1 = list.Where(x => x.CATEGORY_NAME == "Comics").Select(x => x.CATEGORY_ID).FirstOrDefault();
-            var uri2 = App.Base_url + "api/Subcategory/getidsubcategories/?id=" + cat1;
+            var list = await api.CallApiGetAsync<List<Category>>("api/Category/getcategory");
 
-            var result2 = await client.GetStringAsync(uri2);
-            List<SubCategory> list2 = JsonConvert.DeserializeObject<List<SubCategory>>(result2);
-            ListData.ItemsSource = list2;
+            cat1 = list.Where(x => x.CATEGORY_NAME == "Comics").Select(x => x.CATEGORY_ID).FirstOrDefault();
+            var comicslist = await api.CallApiGetAsync<List<SubCategory>>("api/Subcategory/getidsubcategories/?id=" + cat1);
+            ListData.ItemsSource = comicslist;
             UserDialogs.Instance.HideLoading();
         }
 

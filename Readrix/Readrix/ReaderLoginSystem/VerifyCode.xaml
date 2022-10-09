@@ -1,17 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Readrix.ReaderLoginSystem.ForgotPassword" Title="Forgot Password" BackgroundImageSource="bb1">
+             x:Class="Readrix.ReaderLoginSystem.VerifyCode" Title="Code Verify" BackgroundImageSource="bb1">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout  Margin="10,10,10,10" VerticalOptions="CenterAndExpand" >
                 <Label />
                 <Image Source="imagesremovebgpreview.png"/>
                 <Label/>
-                <Entry x:Name="txtEmailReset" Keyboard="Email" Placeholder="Enter Your Email" IsSpellCheckEnabled="True" IsTabStop="True" IsTextPredictionEnabled="True" ReturnType="Done" />
+                <Entry x:Name="txtcode" Keyboard="Numeric" Placeholder="Enter Code"  IsTabStop="True"  ReturnType="Done" />
                 <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
-                    <Button x:Name="btnReset" FontSize="Medium" Clicked="btnReset_Clicked" Text="Get Pass." />
-                    <Button x:Name="btnPassReset" FontSize="Medium" Clicked="btnPassReset_Clicked" Text="Reset Pass. " />
+                    <Button x:Name="btnReset" FontSize="Medium" Clicked="btnReset_Clicked" Text="Verify Code" />
 
                 </StackLayout>
             </StackLayout>

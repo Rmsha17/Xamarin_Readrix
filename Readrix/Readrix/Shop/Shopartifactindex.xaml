@@ -16,12 +16,17 @@
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="Price |" FontSize="Medium" TextColor="Black" ></Label>
-                    <Label x:Name="lblprice" FontSize="Medium" TextColor="Black"></Label>
-                    <Label  FontSize="Medium" Text="Rs." TextColor="Black"></Label>
+                    <Label Text="Price |" FontSize="Medium" TextColor="Black" FontAttributes="Bold"></Label>
+                    <Label x:Name="lblprice" FontSize="Medium" TextColor="Black" FontAttributes="Bold"></Label>
+                    <Label  FontSize="Medium" Text="Rs." TextColor="Black" FontAttributes="Bold"></Label>
+                </StackLayout>
+            
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Available Qty |" FontSize="Medium" TextColor="Black" FontAttributes="Bold" ></Label>
+                    <Label x:Name="lblqty" FontSize="Medium" TextColor="Black" FontAttributes="Bold"></Label>
                 </StackLayout>
 
-                <Label Text="Description" FontSize="Medium" TextColor="Black"></Label>
+                <Label Text="Description" FontSize="Medium" TextColor="Black" FontAttributes="Bold"></Label>
                 <Label x:Name="lbldescription" HorizontalOptions="StartAndExpand" TextColor="Black" Margin="0,0,30,0"></Label>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" >
                     <Button Margin="2,0,2,0"  WidthRequest="200" FontAttributes="Bold" BorderWidth="3" BorderColor="White" Text="Add to Cart" Clicked="Button_Clicked" CornerRadius="15" />

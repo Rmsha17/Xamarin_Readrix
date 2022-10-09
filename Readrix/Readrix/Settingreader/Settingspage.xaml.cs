@@ -1,4 +1,5 @@
 ﻿using Acr.UserDialogs;
+using Google.Protobuf.WellKnownTypes;
 using Readrix.ReaderLoginSystem;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-
+using Readrix.Utils;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,6 +16,7 @@ namespace Readrix.Settingreader
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Settingspage : ContentPage
     {
+        ApiCRUD api = new ApiCRUD();
         public Settingspage()
         {
             InitializeComponent();
@@ -34,14 +36,10 @@ namespace Readrix.Settingreader
                 {
                     UserDialogs.Instance.ShowLoading("Loading Please Wait...");
 
-                    var httpClientHandler = new HttpClientHandler();
-                    httpClientHandler.ServerCertificateCustomValidationCallback =
-                        (message, certificate, chain, sslPolicyErrors) => true;
-                    var client = new HttpClient(httpClientHandler);
-                    var uri = App.Base_url + "api/Reader/removereader/?id=" + App.LoggedInReader.READER_ID;
-                    var result = await client.DeleteAsync(uri);
 
-                    if (result.IsSuccessStatusCode)
+                    var result = await api.CallApiDeleteAsync("api/Reader/removereader/?id=" +App.LoggedInReader.READER_ID);
+
+                    if (result == true)
                     {
                         UserDialogs.Instance.HideLoading();
                         await DisplayAlert("Success", " Permanently Delete your account. You wont be able to login with this account .Thank You.", "OK");
@@ -54,8 +52,7 @@ namespace Readrix.Settingreader
                         await DisplayAlert("Error", "Somthing went wrong!!", "OK");
                     }
                 }
-
-               
+  
             }
             if (select == "Cancelled Orders")
             {

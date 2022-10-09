@@ -1,4 +1,5 @@
 ﻿using Acr.UserDialogs;
+using Google.Protobuf.WellKnownTypes;
 using Newtonsoft.Json;
 using Readrix.Models;
 using System;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-
+using Readrix.Utils;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,6 +17,7 @@ namespace Readrix.Shop
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ShopPage : ContentPage
     {
+        ApiCRUD api = new ApiCRUD();
         public ShopPage()
         {
             InitializeComponent();
@@ -25,28 +27,8 @@ namespace Readrix.Shop
         {
 
             UserDialogs.Instance.ShowLoading("Loading Please Wait...");
-
-
-            var httpClientHandler = new HttpClientHandler();
-            httpClientHandler.ServerCertificateCustomValidationCallback =
-                (message, certificate, chain, sslPolicyErrors) => true;
-            var client = new HttpClient(httpClientHandler);
-            var uri = App.Base_url + "api/ShopArtifacts/getshopartifacts";
-            var result = await client.GetStringAsync(uri);
-            List<Shopartifact> list = JsonConvert.DeserializeObject<List<Shopartifact>>(result);
-            List<Artifact> RefinedList = new List<Artifact>();
-            foreach (var item in list)
-            {
-                var uri2 = App.Base_url + "api/Artifacts/getartifact/?id=" + item.ARTIFACT_FID;
-                var result2 = await client.GetStringAsync(uri2);
-                Artifact list2 = JsonConvert.DeserializeObject<Artifact>(result2);
-               
-                list2.SALE_PRICE = item.SALE_PRICE;
-                list2.shopartidactid = item.ID;
-                list2.PURCHASE_PRICE = item.PURCHASE_PRICE;
-                RefinedList.Add(list2);
-            }
-            ListData.ItemsSource = RefinedList;
+            var modifiedlist = await api.CallApiGetAsync<List<Artifact>>("api/ShopArtifacts/getshopartifacts");
+            ListData.ItemsSource = modifiedlist;
             UserDialogs.Instance.HideLoading();
         }
 

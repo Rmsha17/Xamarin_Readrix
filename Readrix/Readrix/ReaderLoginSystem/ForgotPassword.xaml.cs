@@ -1,4 +1,5 @@
 ﻿using Acr.UserDialogs;
+using Google.Protobuf.WellKnownTypes;
 using Newtonsoft.Json;
 using Readrix.Models;
 using System;
@@ -8,7 +9,7 @@ using System.Net.Http;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
-
+using Readrix.Utils;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,6 +18,7 @@ namespace Readrix.ReaderLoginSystem
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ForgotPassword : ContentPage
     {
+        ApiCRUD api = new ApiCRUD();
         public ForgotPassword()
         {
             InitializeComponent();
@@ -33,51 +35,19 @@ namespace Readrix.ReaderLoginSystem
                     return;
                 }
 
-                UserDialogs.Instance.ShowLoading("Loading Please Wait...");
-                //var client = new HttpClient();
-                var httpClientHandler = new HttpClientHandler();
-                httpClientHandler.ServerCertificateCustomValidationCallback =
-                    (message, certificate, chain, sslPolicyErrors) => true;
-                var client = new HttpClient(httpClientHandler);
-
-                var uri = App.Base_url + "api/readers/forgotpassword?email=" + txtEmailReset.Text;
-
-                var result = await client.GetStringAsync(uri);
-
-                Reader check = JsonConvert.DeserializeObject<Reader>(result);
-
+              
+               
+                var check = await api.CallApiGetAsync<Reader>("api/readers/forgotpassword?email=" + txtEmailReset.Text);
                 if (check == null)
                 {
                     await DisplayAlert("Message", "The email you have entered is not registered.", "OK");
                     return;
                 }
 
-
-
-                // EMAIL SENDING ================================================================
-
-                MailMessage mail = new MailMessage();
-                mail.To.Add(check.READER_EMAIL);
-                mail.From = new MailAddress("readrix28@gmail.com", "Password Forgotton",System.Text.Encoding.UTF8);
-                mail.Subject = "Password Forgot Request";
-                mail.SubjectEncoding = System.Text.Encoding.UTF8;
-
-                mail.Body = "Dear Reader, Your Current Login Details are as Follows : <br><br><br>Username = " + check.READER_EMAIL + " <br>Password = " + check.READER_PASSWORD + " <br><br>Readrix Team";
-                mail.BodyEncoding = System.Text.Encoding.UTF8;
-                mail.IsBodyHtml = true;
-                mail.Priority = MailPriority.High;
-
-                SmtpClient client2 = new SmtpClient("smtp.gmail.com", 587);
-                client2.Credentials = new System.Net.NetworkCredential("readrix28@gmail.com", "ejinwqithimbfxxs");
-                client2.EnableSsl = true;
-
-                client2.Send(mail);
-
+                MailProvider.SenttoMail(check.READER_EMAIL, "Password Forgot Request", "Dear " + check.READER_NAME + "!!Your Payment has been successfull.<br/> Regards Readrix Team");
+                UserDialogs.Instance.HideLoading();
                 await DisplayAlert("Message", "Your Login Details are sent to your email address please find that in your inbox", "OK");
                 await Navigation.PopAsync();
-
-                UserDialogs.Instance.HideLoading();
-
             }
             catch (Exception ex)
             {
@@ -86,5 +56,31 @@ namespace Readrix.ReaderLoginSystem
             }
         }
 
+        private async void btnPassReset_Clicked(object sender, EventArgs e)
+        {
+            UserDialogs.Instance.ShowLoading("Loading Please Wait...");
+            // Required Field Validator =======================================================================
+            if (string.IsNullOrEmpty(txtEmailReset.Text))
+            {
+                await DisplayAlert("Message", "Please Enter Email", "OK"); 
+                UserDialogs.Instance.HideLoading();
+                return;
+            }
+            var check = await api.CallApiGetAsync<Reader>("api/readers/forgotpassword?email=" + txtEmailReset.Text);
+            if (check == null)
+            {
+                await DisplayAlert("Message", "The email you have entered is not registered.", "OK");
+                UserDialogs.Instance.HideLoading();
+                return;
+            }
+
+            Random random = new Random();
+            int code = random.Next(1001, 9999);
+            App.code = code;
+            App.passwardreset = check;
+            MailProvider.SenttoMail(check.READER_EMAIL, "Passward Reset Code", "Dear " + check.READER_NAME + "!!Please verify this code " + code +".<br/> Regards Readrix Team");
+            UserDialogs.Instance.HideLoading();
+            await Navigation.PushAsync(new VerifyCode());
+        }
     }
 }

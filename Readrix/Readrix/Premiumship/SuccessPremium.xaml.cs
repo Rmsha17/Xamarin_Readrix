@@ -16,7 +16,7 @@ namespace Readrix.Premiumship
         public SuccessPremium()
         {
             InitializeComponent();
-            App.LoggedInReader.READER_IMAGE = App.LoggedInReader.READER_IMAGE.Replace(App.Base_urlPic, "~/");
+        //    App.LoggedInReader.READER_IMAGE = App.LoggedInReader.READER_IMAGE.Replace(App.Base_urlPic, "~/");
 
         }
 

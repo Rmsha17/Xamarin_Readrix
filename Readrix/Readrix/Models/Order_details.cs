@@ -17,11 +17,9 @@ namespace Readrix.Models
         public decimal ARTIFACT_PURCHASEPRICE { get; set; }
 
         public decimal QUANTITY { get; set; }
-        public decimal? Total { get; set; }
-      
-
+        public decimal Total { get; set; }
+ 
         public string ARTIFACT_NAME { get; set; }
-
         public string ARTIFACT_IMAGE { get; set; }
 
         

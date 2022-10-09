@@ -9,12 +9,15 @@ using System.Threading.Tasks;
 using Readrix.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Readrix.Utils;
+using Google.Protobuf.WellKnownTypes;
 
 namespace Readrix.Writers
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Writerlist : ContentPage
     {
+        ApiCRUD api = new ApiCRUD();
         public Writerlist()
         {
             InitializeComponent();
@@ -23,22 +26,7 @@ namespace Readrix.Writers
         private async void LoadData()
         {
             UserDialogs.Instance.ShowLoading("Loading Please Wait...");
-            var httpClientHandler = new HttpClientHandler();
-            httpClientHandler.ServerCertificateCustomValidationCallback =
-                (message, certificate, chain, sslPolicyErrors) => true;
-            var client = new HttpClient(httpClientHandler);
-            var uri = App.Base_url + "api/Writer/getwriters";
-            var result = await client.GetStringAsync(uri);
-            List<Writer> list = JsonConvert.DeserializeObject<List<Writer>>(result);
-           
-            //List<Writer> RefinedList = new List<Writer>();
-            //foreach (var item in list)
-            //{
-            //    item.WRITER_IMAGE = item.WRITER_IMAGE.Replace("~/", "");
-            //    item.WRITER_IMAGE = App.Base_urlPic + item.WRITER_IMAGE;
-            //    RefinedList.Add(item);
-            //}
-            
+            var list = await api.CallApiGetAsync<List<Writer>>("api/Writer/getwriters");
             Crousalview.ItemsSource = list;
             UserDialogs.Instance.HideLoading();
         }

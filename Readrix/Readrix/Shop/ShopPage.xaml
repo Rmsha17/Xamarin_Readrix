@@ -31,7 +31,7 @@
                             </VisualStateManager.VisualStateGroups>
 
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="50" />
+                                <RowDefinition Height="70" />
                                 <RowDefinition Height="50" />
                                 <RowDefinition Height="50" />
                             </Grid.RowDefinitions>
@@ -40,36 +40,36 @@
                                 <ColumnDefinition Width="80*"/>
                             </Grid.ColumnDefinitions>
                             <Frame  Grid.RowSpan="4" 
-                              Grid.ColumnSpan="2" Padding="5">
+                              Grid.ColumnSpan="2" Padding="9">
                                 <Image 
                                 Source="{Binding ARTIFACT_PICTURE}"
                                 x:Name="artimage"
                                 Aspect="Fill"
                                 HeightRequest="150"
-                                WidthRequest="150" /> 
+                                WidthRequest="150" />
                             </Frame>
-                           
 
-                       <Label Grid.Row="4"
-                       Grid.ColumnSpan="2" 
+
+                            <Label Grid.Row="4"
+                       Grid.ColumnSpan="2" Grid.RowSpan="1"
                        Text="{Binding ARTIFACT_NAME}"
                        FontAttributes="Bold" TextColor="Black"
                        FontSize="14"/>
-                      <StackLayout Orientation="Horizontal" Grid.Row="5"
-                       Grid.ColumnSpan="2" >
-                           
-                      <Label 
+                            <StackLayout Orientation="Horizontal" Grid.Row="5"
+                       Grid.ColumnSpan="2"  >
+
+                                <Label 
                        Text="Price |" TextColor="Black"
                        FontAttributes="Bold"
-                       FontSize="14"/>     
-                      <Label  
+                       FontSize="14"/>
+                                <Label  
                        Text="{Binding SALE_PRICE}"
                        FontAttributes="Bold"
                        FontSize="14"
                        TextColor="Black"/>
+                                
                             </StackLayout>
-                       
-
+                            
                         </Grid>
 
                     </DataTemplate>

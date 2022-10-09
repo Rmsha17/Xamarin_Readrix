@@ -15,14 +15,16 @@ using Ubiety.Dns.Core;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Readrix.Utils;
+using Google.Protobuf.WellKnownTypes;
 
 namespace Readrix.ReaderLoginSystem
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ReaderLogin : ContentPage
     {
-       
 
+        ApiCRUD api = new ApiCRUD();
         public ReaderLogin()
         {
             InitializeComponent();
@@ -47,37 +49,32 @@ namespace Readrix.ReaderLoginSystem
                 try
                 {
                     UserDialogs.Instance.ShowLoading("Loading Please Wait...");
-                    //var client = new HttpClient();
-                    var httpClientHandler = new HttpClientHandler();
-                    httpClientHandler.ServerCertificateCustomValidationCallback =
-                        (message, certificate, chain, sslPolicyErrors) => true;
-                    var client = new HttpClient(httpClientHandler);
-                   
-                    var uri = App.Base_url + "api/readers/loginchk?email=" + txtEmail.Text + "&password=" + txtPassword.Text;
-
-                    var result = await client.GetStringAsync(uri);
-
-                    Reader Reader = JsonConvert.DeserializeObject<Reader>(result);
-                    
-                    if (Reader != null)
+       
+                    var Reader = await api.CallApiGetAsync<Reader>("api/readers/loginchk?email=" + txtEmail.Text + "&password=" + txtPassword.Text);
+                    if (Reader.READER_EMAIL != null)
                     {
                         if(Reader.IS_ACCOUNT_ACTIVATE == true)
                         {
                             UserDialogs.Instance.HideLoading();
                             App.LoggedInReader = Reader;
                             App.Current.MainPage = new ReadrixFlyout();
+                        } 
+                        else if(Reader.IS_ACCOUNT_ACTIVATE != true)
+                        {
+                            UserDialogs.Instance.HideLoading();
+                            await DisplayAlert("Oops", "Your Prevoius Account has been deleted. please Re-Create New!!", "ok");
                         }
                         else
                         {
                             UserDialogs.Instance.HideLoading();
-                            await DisplayAlert("Oops", "Your Prevoius Account has been deleted. please Re-Create New!!", "ok");
+                            await DisplayAlert("Oops", "Something went wrong.Please Try again !!", "ok");
                         }
                         
                     }
                     else
                     {
                         UserDialogs.Instance.HideLoading();
-                        await DisplayAlert("message", "Somthing went wrong", "ok");
+                        await DisplayAlert("Oops", "Incorrect Email OR Passwoed. please Re-Enter !!", "ok");
                     }
 
                 }

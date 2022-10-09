@@ -28,12 +28,13 @@
                                 </VisualStateManager.VisualStateGroups>
 
                                 <Grid.RowDefinitions>
+                                    <RowDefinition Height="90" />
                                     <RowDefinition Height="50" />
                                     <RowDefinition Height="50" />
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="50"/>
-                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="90*"/>
+                                    <ColumnDefinition Width="80*"/>
                                 </Grid.ColumnDefinitions>
                                 <Frame  Grid.RowSpan="4" 
                               Grid.ColumnSpan="2" Padding="5">
@@ -41,7 +42,7 @@
                                 Source="{Binding ARTIFACT_PICTURE}"
                                 x:Name="artimage"
                                 Aspect="Fill"
-                                HeightRequest="150"
+                                HeightRequest="170"
                                 WidthRequest="150" />
                                 </Frame>
                                
@@ -49,7 +50,7 @@
                                 <Label Grid.Row="4"
                            Grid.ColumnSpan="2" 
                        Text="{Binding ARTIFACT_NAME}"
-                       FontAttributes="Bold" TextColor="Black"
+                       FontAttributes="Bold" TextColor="Black" MaxLines="2"
                        FontSize="14"/>
 
                                 <Label Grid.Row="5"

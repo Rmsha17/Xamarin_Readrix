@@ -21,7 +21,7 @@ namespace Readrix.Genre
         {
           
             InitializeComponent();
-           string file = episode.EPISODE_FILE.Replace("~/", "/");
+            string file = episode.EPISODE_FILE.Replace("~/", "/");
             webView.Source = App.EpisodeViewer + file;
             lblepisode.Text = name + "/ Episode No: " + episode.EPISODE_NO;
             Title = "Episode " + episode.EPISODE_NO;

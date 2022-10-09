@@ -9,12 +9,15 @@ using Plugin.Media;
 using Plugin.Media.Abstractions;
 using Acr.UserDialogs;
 using System.Text.RegularExpressions;
+using Google.Protobuf.WellKnownTypes;
+using Readrix.Utils;
 
 namespace Readrix.ReaderLoginSystem
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ReaderRegistration : ContentPage
     {
+        ApiCRUD api = new ApiCRUD();
         public static string PicPath = "Usericon.png";
        
         private MediaFile _mediaFile;
@@ -48,18 +51,9 @@ namespace Readrix.ReaderLoginSystem
 
                     var content = new MultipartFormDataContent();
                     content.Add(new StreamContent(_mediaFile.GetStream()), "\"file\"", $"\"{_mediaFile.Path}\"");
-                    var uri1 = App.Base_urlPic + "api/readers/postimage";
 
-                    var httpClientHandler = new HttpClientHandler();
-                    httpClientHandler.ServerCertificateCustomValidationCallback =
-                        (message, certificate, chain, sslPolicyErrors) => true;
-                    var client = new HttpClient(httpClientHandler);
-                    var httpResponse = await client.PostAsync(uri1, content);
-                    string ResponseMessage = await httpResponse.Content.ReadAsStringAsync();
-                    string image = ResponseMessage.Substring(1, ResponseMessage.Length - 2);
-                    
-                  //await DisplayAlert("Message", ResponseMessage, "ok");
-
+                   string ResponseMessage = await api.CallApiPostimageAsync("api/readers/postimage", content);
+                   string image = ResponseMessage.Substring(1, ResponseMessage.Length - 2);
 
 
                     var reader = new Reader
@@ -73,26 +67,20 @@ namespace Readrix.ReaderLoginSystem
                         IS_ACCOUNT_ACTIVATE = true
 
                     };
-                    
-                    var uri = App.Base_url + "api/readers/postreader";
+
+                    var readeradd = await api.CallApiPostAsync("api/readers/postreader", reader);
+
                    
-
-                    string JsonData = JsonConvert.SerializeObject(reader);
-                    StringContent StringData = new StringContent(JsonData, Encoding.UTF8, "application/json");
-
-                    HttpResponseMessage responseMessage = await client.PostAsync(uri, StringData);
-                    string responseData = await responseMessage.Content.ReadAsStringAsync();
-                   //var response = JsonConvert.DeserializeObject<Response>(responseData);
-                    
-                    if (responseData != "")
+                    if (readeradd != true)
                     {
                         UserDialogs.Instance.HideLoading();
                         await DisplayAlert("Info", "Email Already Existed!!", "ok");
                         await Navigation.PushAsync(new ReaderRegistration());
                     }
-                    if (responseData == "")
+                    if (readeradd == true)
                     {
                         UserDialogs.Instance.HideLoading();
+                        MailProvider.SenttoMail(reader.READER_EMAIL, "Account Created", "Dear " + reader.READER_NAME + "!!Your account has been successfull created.<br/> Regards Readrix Team");
                         await DisplayAlert("Success", "Successfully Created!!", "ok");
                         await Navigation.PushAsync(new ReaderLogin());
                     }
