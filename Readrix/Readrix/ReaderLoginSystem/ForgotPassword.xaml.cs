@@ -44,7 +44,7 @@ namespace Readrix.ReaderLoginSystem
                     return;
                 }
 
-                MailProvider.SenttoMail(check.READER_EMAIL, "Password Forgot Request", "Dear " + check.READER_NAME + "!!Your Payment has been successfull.<br/> Regards Readrix Team");
+                MailProvider.SenttoMail(check.READER_EMAIL, "Password Forgot Request", "Dear " + check.READER_NAME + "!!Your Account Credentials are :<br/>" + check.READER_EMAIL + "<br/>"+ check.READER_PASSWORD + " <br/> Regards Readrix Team");
                 UserDialogs.Instance.HideLoading();
                 await DisplayAlert("Message", "Your Login Details are sent to your email address please find that in your inbox", "OK");
                 await Navigation.PopAsync();

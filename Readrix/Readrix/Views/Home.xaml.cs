@@ -86,7 +86,6 @@ namespace Readrix.Views
         {
             var selected = currentSelected.FirstOrDefault() as Artifact;
             await Navigation.PushAsync(new ArtifactIndex(selected));
-
         }
     }
 }
